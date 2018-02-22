@@ -13,10 +13,10 @@ public class Shoot : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        transform.Rotate(Input.GetAxisRaw("Horizontal"), 0, 0);
 		if (Input.GetButtonDown("Fire1"))
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.forward, 10);
+            //Debug.DrawRay(transform.position, transform.right * 10, Color.red, 1);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 10);
             if (hit.collider != null && hit.collider.CompareTag("Enemy"))
             {
                 hit.collider.GetComponent<Enemy>().ChangeHealth(-1);

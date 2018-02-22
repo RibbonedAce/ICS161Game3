@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class PointAtMouse : MonoBehaviour {
-    private static Camera cam;  // The camera to use for reference
+    private static Camera cam;          // The camera to use for reference
+    public KeyCode hold;                // The key to hold down while using
+    private Rigidbody2D _rigidbody2D;   // The Rigidbody component attached
 
     private void Awake()
     {
@@ -11,6 +14,7 @@ public class PointAtMouse : MonoBehaviour {
         {
             cam = GameObject.Find("Main Camera").GetComponent<Camera>();
         }
+        _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     // Use this for initialization
@@ -22,8 +26,10 @@ public class PointAtMouse : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        Vector3 relativeCam = new Vector3(cam.transform.position.x, cam.transform.position.y, transform.position.z);
-        Vector3 mouseAt = new Vector3(cam.ScreenToWorldPoint(Input.mousePosition).x, cam.ScreenToWorldPoint(Input.mousePosition).y, 0);
-        transform.rotation = Quaternion.LookRotation(mouseAt - relativeCam, Vector3.back);
+        if (hold == KeyCode.None || Input.GetKey(hold))
+        {
+            Vector3 mouseAt = new Vector3(cam.ScreenToWorldPoint(Input.mousePosition).x, cam.ScreenToWorldPoint(Input.mousePosition).y, transform.position.z);
+            transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector3.right, mouseAt));
+        }
 	}
 }
