@@ -9,7 +9,8 @@ public class PlayerController : MonoBehaviour {
     public Camera cam;                      // The camera to use for reference
     public KeyCode hold;                    // The key to hold down while using
     public int maxHealth;                   // The maximum health of the player
-    public int health;                      // The current health of the player
+    public int health;                      // The current health of the playe
+    public GameObject projectile;           // The projectile to use for firing
     private bool invincible;                // Whether the player is invincible
     private Coroutine flashRoutine;         // The flashing coroutine to use
     private SpriteRenderer _spriteRenderer; // The Sprite Renderer component attached
@@ -34,19 +35,30 @@ public class PlayerController : MonoBehaviour {
     void Update ()
     {
         _rigidbody2D.MovePosition(transform.position + new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0) * Time.deltaTime);
-        if (Input.GetButtonDown("Fire1"))
-        {
-            Debug.DrawRay(transform.position, transform.right * 10, Color.red, 1);
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 10);
-            if (hit.collider != null && hit.collider.gameObject.CompareTag("Enemy"))
-            {
-                hit.collider.GetComponent<Enemy>().ChangeHealth(-1);
-            }
-        }
         if (hold == KeyCode.None || Input.GetKey(hold))
         {
             Vector3 mouseAt = new Vector3(cam.ScreenToWorldPoint(Input.mousePosition).x, cam.ScreenToWorldPoint(Input.mousePosition).y, 0) - transform.position;
             _rigidbody2D.MoveRotation(Vector2.SignedAngle(Vector3.right, mouseAt));
+        }
+        if (Input.GetAxisRaw("HFire") < 0)
+        {
+            Projectile p = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Projectile>();
+            p.SetDirection(Direction.Left);
+        }
+        else if (Input.GetAxisRaw("HFire") > 0)
+        {
+            Projectile p = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Projectile>();
+            p.SetDirection(Direction.Right);
+        }
+        else if (Input.GetAxisRaw("VFire") < 0)
+        {
+            Projectile p = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Projectile>();
+            p.SetDirection(Direction.Down);
+        }
+        else if (Input.GetAxisRaw("VFire") > 0)
+        {
+            Projectile p = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Projectile>();
+            p.SetDirection(Direction.Up);
         }
     }
 
@@ -61,6 +73,7 @@ public class PlayerController : MonoBehaviour {
     {
         invincible = false;
         StopCoroutine(flashRoutine);
+        _spriteRenderer.color = Color.white;
     }
 
     // Flash indefinitely
@@ -77,7 +90,7 @@ public class PlayerController : MonoBehaviour {
 
     void OnCollisionEnter2D (Collision2D collision)
     {
-        if (collision.otherCollider.gameObject.CompareTag("Enemy"))
+        if (collision.collider.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("Collided");
             ChangeHealth(-1);

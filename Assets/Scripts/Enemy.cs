@@ -2,13 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Collider2D))]
 public class Enemy : MonoBehaviour {
-    public int maxHealth;   // The maximum health of the enemy
-    public int health;      // The health of the enemy
+    public int maxHealth;               // The maximum health of the enemy
+    public int health;                  // The health of the enemy
+    public int range;                   // The range to be randomly placed
+    private Rigidbody2D _rigidbody2D;   // The Rigidbody component attached
 
     void Awake ()
     {
-        health = maxHealth;
+        _rigidbody2D = GetComponent<Rigidbody2D>();
+        _rigidbody2D.MovePosition(new Vector2(Random.Range(0, 10), Random.Range(0, 10)));
+        health = maxHealth;   
     }
 
     // Use this for initialization
