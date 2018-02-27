@@ -8,6 +8,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     public Camera cam;                      // The camera to use for reference
     public KeyCode hold;                    // The key to hold down while using
+    public float speed;                     // The speed the player moves at
     public int maxHealth;                   // The maximum health of the player
     public int health;                      // The current health of the playe
     public GameObject projectile;           // The projectile to use for firing
@@ -34,7 +35,7 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        _rigidbody2D.MovePosition(transform.position + new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0) * Time.deltaTime);
+        _rigidbody2D.MovePosition(transform.position + new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0) * speed * Time.deltaTime);
         if (hold == KeyCode.None || Input.GetKey(hold))
         {
             Vector3 mouseAt = new Vector3(cam.ScreenToWorldPoint(Input.mousePosition).x, cam.ScreenToWorldPoint(Input.mousePosition).y, 0) - transform.position;
@@ -90,7 +91,7 @@ public class PlayerController : MonoBehaviour {
 
     void OnCollisionEnter2D (Collision2D collision)
     {
-        if (collision.collider.gameObject.CompareTag("Enemy"))
+        if (collision.collider.gameObject.CompareTag("Enemy") && !invincible)
         {
             Debug.Log("Collided");
             ChangeHealth(-1);

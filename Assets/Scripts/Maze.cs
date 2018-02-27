@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Maze {
-    private int height;
-    private int width;
+    private int height;             // The height of the map
+    private int width;              // The width of the map
     private List<MapNode> nodes;    // The mapnodes that make up the map
 
     // A constructor taking height and width
@@ -97,6 +97,42 @@ public class Maze {
         return (index < 1 || index >= nodes.Count || xy.x >= width) ? new MapNode() : nodes[nodes.IndexOf(mn) + 1];
     }
 
+    // Get the node in a specified direction on the map
+    private MapNode NodeInDirection (MapNode mn, Direction d)
+    {
+        switch (d)
+        {
+            case Direction.Up:
+                return NodeAbove(mn);
+            case Direction.Down:
+                return NodeBelow(mn);
+            case Direction.Left:
+                return NodeLeft(mn);
+            case Direction.Right:
+                return NodeRight(mn);
+            default:
+                return NodeRight(mn);
+        }
+    }
+
+    // Get the node in a specified direction on the map
+    private int NodeInDirection (int index, Direction d)
+    {
+        switch (d)
+        {
+            case Direction.Up:
+                return NodeAbove(index);
+            case Direction.Down:
+                return NodeBelow(index);
+            case Direction.Left:
+                return NodeLeft(index);
+            case Direction.Right:
+                return NodeRight(index);
+            default:
+                return NodeRight(index);
+        }
+    }
+
     // Connect two nodes together if adjacent
     private void ConnectNodes (MapNode mn1, MapNode mn2)
     {
@@ -127,22 +163,56 @@ public class Maze {
         }
     }
 
+    // Connect two nodes together if adjacent
+    private void ConnectNodes(int mn1, int mn2)
+    {
+        Vector2Int xy1 = PositionAt(mn1);
+        Vector2Int xy2 = PositionAt(mn2);
+        if ((xy2 - xy1).magnitude == 1.0f)
+        {
+            if (xy2.y - xy1.y == 1)
+            {
+                nodes[mn1].adjacents.Add(Direction.Up, nodes[mn2]);
+                nodes[mn2].adjacents.Add(Direction.Down, nodes[mn1]);
+            }
+            else if (xy2.y - xy1.y == -1)
+            {
+                nodes[mn1].adjacents.Add(Direction.Down, nodes[mn2]);
+                nodes[mn2].adjacents.Add(Direction.Up, nodes[mn1]);
+            }
+            else if (xy2.x - xy1.x == -1)
+            {
+                nodes[mn1].adjacents.Add(Direction.Left, nodes[mn2]);
+                nodes[mn2].adjacents.Add(Direction.Right, nodes[mn1]);
+            }
+            else if (xy2.x - xy1.x == 1)
+            {
+                nodes[mn1].adjacents.Add(Direction.Right, nodes[mn2]);
+                nodes[mn2].adjacents.Add(Direction.Left, nodes[mn1]);
+            }
+        }
+    }
+
+    // Find the general direction of an index given a start index
+    private Direction DirectionTo (int start, int end)
+    {
+        Vector2Int xys = PositionAt(start);
+        Vector2Int xye = PositionAt(end);
+        if (Mathf.Abs(xys.x - xye.x) >= Mathf.Abs(xys.y - xye.y))
+        {
+            return xys.x - xye.x > 0 ? Direction.Left : Direction.Right;
+        }
+        else
+        {
+            return xys.y - xye.y > 0 ? Direction.Down : Direction.Up;
+        }
+    }
+
     // Find a path between two nodes, returning the closest one if possible
     private List<int> FindPath (int start, int end)
     {
         List<int> result = new List<int> { start };
         return result;
-    }
-
-    // Clear a path between two nodes
-    private void MakePath (int start, int end)
-    {
-        List<int> path = FindPath(start, end);
-        if (path[path.Count - 1] != end)
-        {
-            Vector2Int xys = PositionAt(path[path.Count - 1]);
-            Vector2Int xye = PositionAt(end);
-        }
     }
 
     // Make a random map
@@ -161,11 +231,22 @@ public class Maze {
                 mn.adjacents.Add(Direction.Up, up);
                 up.adjacents.Add(Direction.Down, mn);
             }
-            if (xy.x < width - 1 && Random.Range(0, 1) == 1)
+            if (xy.x < width - 1 && Random.Range(0, 2) == 1)
             {
                 MapNode right = NodeRight(mn);
                 mn.adjacents.Add(Direction.Right, right);
                 right.adjacents.Add(Direction.Left, mn);
+            }
+        }
+        for (int i = 0; i < nodes.Count; ++i)
+        {
+            for (int j = i + 1; j < nodes.Count; ++j)
+            {
+                List<int> path = FindPath(i, j);
+                if (path[path.Count - 1] != j)
+                {
+                    ConnectNodes(path[path.Count - 1], NodeInDirection(path[path.Count - 1], DirectionTo(path[path.Count - 1], j)));
+                }
             }
         }
     }
