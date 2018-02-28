@@ -7,7 +7,7 @@ public class Maze {
     private int width;              // The width of the map
     private float chance;           // The amount of walls to spawn
     public List<MapNode> nodes;     // The mapnodes that make up the map
-
+    private bool foundDest = false;
     // A constructor taking height and width
     public Maze (int nHeight, int nWidth, float nChance)
     {
@@ -379,43 +379,64 @@ public class Maze {
         return Mathf.Sqrt(Mathf.Pow(xys.x - xye.x, 2) + Mathf.Pow(xys.y - xye.y, 2));
     }
 
-    /*// Find a path between two nodes, returning the closest one if possible
-    private List<int> FindPath (int start, int end)
+    // Find a path between two nodes, returning the closest one if possible
+    private List<int> FindPathOld (int start, int end)
     {
         List<int> result = new List<int>();
         List<int> visitedNodes = new List<int>();
+        List<int> TotalNodes = new List<int>();
+        TotalNodes.Add(start);
+        CountNodesInTree(start, end, TotalNodes);
         if (start != end)
         {
             result.Add(start);
             visitedNodes.Add(start);
-            FindPathOverride(start, end, result, visitedNodes);
+            FindPathOverride(start, end, result, visitedNodes,TotalNodes.Count);
         }
+        foundDest = false;
         return result;
     }
 
-    private void FindPathOverride(int start, int end, List<int> o, List<int> visited)
+    private void CountNodesInTree(int start, int end, List<int> c)
+    {
+        foreach(MapNode mn in nodes[start].adjacents.Values)
+        {
+            if(nodes.IndexOf(mn) != -1 && !c.Contains(nodes.IndexOf(mn)))
+            {
+                Debug.Log(c.Count + 1);
+                c.Add(start);
+                CountNodesInTree(nodes.IndexOf(mn), end, c);
+            }
+        }
+    }
+
+    private void FindPathOverride(int start, int end, List<int> o, List<int> visited,int max)
     {
         if (start != end)
         {
             bool isStuck = true;
             foreach (MapNode mn in nodes[start].adjacents.Values)
             {
-                if (mn != null && !visited.Contains(nodes.IndexOf(mn)))
+                if (nodes.IndexOf(mn) != -1 && !visited.Contains(nodes.IndexOf(mn)) && !foundDest)
                 {
-                    int newStart = nodes.IndexOf(mn);
                     isStuck = false;
-                    o.Add(newStart);
+                    int newStart = nodes.IndexOf(mn);
                     visited.Add(newStart);
-                    FindPathOverride(newStart, end, o, visited);
+                    o.Add(newStart);
+                    FindPathOverride(newStart, end, o, visited, max);
                 }
             }
-            if (isStuck)
+            if (isStuck && visited.Count < max && !foundDest)
             {
-                o.Remove(start);
-                FindPathOverride(o[o.Count - 1], end, o, visited);
+                if (o.Count > 1)
+                {
+                    o.Remove(start);
+                    FindPathOverride(o[o.Count - 1], end, o, visited, max);
+                }
             }
         }
-    }*/
+        else foundDest = true;
+    }
 
     // Make a random map
     private void RandomizeMap ()
