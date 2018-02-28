@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MazeObject : MonoBehaviour {
-    public int height;      // The height of the maze to make
-    public int width;       // The width of the maze to make
     [Range(0f, 1f)]
     public float chance;    // The difficulty of the maze (how many walls spawn)
     public GameObject wall; // The wall prefab
@@ -12,7 +10,7 @@ public class MazeObject : MonoBehaviour {
 
     void Awake ()
     {
-        maze = new Maze(height, width, chance);
+        maze = new Maze(GameController.height, GameController.width, chance);
         SpawnWalls();
     }
 
@@ -29,30 +27,24 @@ public class MazeObject : MonoBehaviour {
     // Spawn walls depending on the maze
     private void SpawnWalls ()
     {
-        for (int i = 0; i < width; ++i)
+        for (int i = 0; i < GameController.width; ++i)
         {
-            if (i != 0)
-            {
-                Instantiate(wall, new Vector3(i, -0.5f, 0), Quaternion.identity);
-            }
-            if (i != width / 2)
-            {
-                Instantiate(wall, new Vector3(i, height - 0.5f, 0), Quaternion.identity);
-            }
+            Instantiate(wall, new Vector3(i, -0.5f, 0), Quaternion.identity);
+            Instantiate(wall, new Vector3(i, GameController.height - 0.5f, 0), Quaternion.identity);
         }
-        for (int i = 0; i < height; ++i)
+        for (int i = 0; i < GameController.height; ++i)
         {
             Instantiate(wall, new Vector3(-0.5f, i, 0), Quaternion.Euler(0, 0, 90));
-            Instantiate(wall, new Vector3(width - 0.5f, i, 0), Quaternion.Euler(0, 0, 90));
+            Instantiate(wall, new Vector3(GameController.width - 0.5f, i, 0), Quaternion.Euler(0, 0, 90));
         }
         foreach (MapNode mn in maze.GetNodes())
         {
             Vector2Int xy = maze.PositionAt(mn);
-            if (xy.y < height - 1 && mn.adjacents[Direction.Up] == null)
+            if (xy.y < GameController.height - 1 && mn.adjacents[Direction.Up] == null)
             {
                 Instantiate(wall, xy + new Vector2(0, 0.5f), Quaternion.identity);
             }
-            if (xy.x < width - 1 && mn.adjacents[Direction.Right] == null)
+            if (xy.x < GameController.width - 1 && mn.adjacents[Direction.Right] == null)
             {
                 Instantiate(wall, xy + new Vector2(0.5f, 0), Quaternion.Euler(0, 0, 90));
             }
