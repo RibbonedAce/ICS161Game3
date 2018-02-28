@@ -13,7 +13,6 @@ public class Enemy : MonoBehaviour {
     void Awake ()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        _rigidbody2D.MovePosition(new Vector2(Random.Range(0, 10), Random.Range(0, 10)));
         health = maxHealth;   
     }
 

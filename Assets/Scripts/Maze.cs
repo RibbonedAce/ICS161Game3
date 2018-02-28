@@ -353,17 +353,17 @@ public class Maze {
     // Find all connected nodes to the current one
     private List<int> AllConnectedNodes (int start)
     {
-        List<int> result = new List<int>();
+        List<int> result = new List<int> { start };
         List<int> search = new List<int> { start };
         while (search.Count > 0)
         {
             int toSearch = search[0];
             search.RemoveAt(0);
-            result.Add(toSearch);
             foreach (MapNode mn in nodes[toSearch].adjacents.Values)
             {
                 if (mn != null && !result.Contains(nodes.IndexOf(mn)))
                 {
+                    result.Add(nodes.IndexOf(mn));
                     search.Add(nodes.IndexOf(mn));
                 }
             }

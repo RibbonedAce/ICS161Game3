@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour {
     public int health;                      // The current health of the playe
     public GameObject projectile;           // The projectile to use for firing
     private bool invincible;                // Whether the player is invincible
+    private bool fired;                     // If the player has fired
     private Coroutine flashRoutine;         // The flashing coroutine to use
     private SpriteRenderer _spriteRenderer; // The Sprite Renderer component attached
     private Rigidbody2D _rigidbody2D;       // The Rigidbody component attached
@@ -41,25 +42,33 @@ public class PlayerController : MonoBehaviour {
             Vector3 mouseAt = new Vector3(cam.ScreenToWorldPoint(Input.mousePosition).x, cam.ScreenToWorldPoint(Input.mousePosition).y, 0) - transform.position;
             _rigidbody2D.MoveRotation(Vector2.SignedAngle(Vector3.right, mouseAt));
         }
-        if (Input.GetAxisRaw("HFire") < 0)
+        if (Input.GetAxisRaw("HFire") < 0 && !fired)
         {
+            fired = true;
             Projectile p = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Projectile>();
             p.SetDirection(Direction.Left);
         }
-        else if (Input.GetAxisRaw("HFire") > 0)
+        else if (Input.GetAxisRaw("HFire") > 0 && !fired)
         {
+            fired = true;
             Projectile p = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Projectile>();
             p.SetDirection(Direction.Right);
         }
-        else if (Input.GetAxisRaw("VFire") < 0)
+        else if (Input.GetAxisRaw("VFire") < 0 && !fired)
         {
+            fired = true;
             Projectile p = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Projectile>();
             p.SetDirection(Direction.Down);
         }
-        else if (Input.GetAxisRaw("VFire") > 0)
+        else if (Input.GetAxisRaw("VFire") > 0 && !fired)
         {
+            fired = true;
             Projectile p = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Projectile>();
             p.SetDirection(Direction.Up);
+        }
+        else if (Input.GetAxisRaw("HFire") == 0 && Input.GetAxisRaw("VFire") == 0)
+        {
+            fired = false;
         }
     }
 
@@ -93,7 +102,6 @@ public class PlayerController : MonoBehaviour {
     {
         if (collision.collider.gameObject.CompareTag("Enemy") && !invincible)
         {
-            Debug.Log("Collided");
             ChangeHealth(-1);
             invincible = true;
             flashRoutine = StartCoroutine(Flash());
