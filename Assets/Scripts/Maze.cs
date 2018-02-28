@@ -5,7 +5,7 @@ using UnityEngine;
 public class Maze {
     private int height;             // The height of the map
     private int width;              // The width of the map
-    private List<MapNode> nodes;    // The mapnodes that make up the map
+    public List<MapNode> nodes;     // The mapnodes that make up the map
 
     // A constructor taking height and width
     public Maze (int nHeight, int nWidth)
@@ -18,6 +18,12 @@ public class Maze {
             nodes.Add(new MapNode());
         }
         RandomizeMap();
+    }
+
+    // Return the maze nodes
+    public List<MapNode> GetNodes ()
+    {
+        return new List<MapNode>(nodes);
     }
 
     // Get the MapNode at the x,y position in the map
@@ -164,7 +170,7 @@ public class Maze {
     }
 
     // Connect two nodes together if adjacent
-    private void ConnectNodes(int mn1, int mn2)
+    private void ConnectNodes (int mn1, int mn2)
     {
         Vector2Int xy1 = PositionAt(mn1);
         Vector2Int xy2 = PositionAt(mn2);
@@ -228,17 +234,17 @@ public class Maze {
             if (xy.y < height - 1 && Random.Range(0, 2) == 1)
             {
                 MapNode up = NodeAbove(mn);
-                mn.adjacents.Add(Direction.Up, up);
-                up.adjacents.Add(Direction.Down, mn);
+                mn.adjacents[Direction.Up] = up;
+                up.adjacents[Direction.Down] = mn;
             }
             if (xy.x < width - 1 && Random.Range(0, 2) == 1)
             {
                 MapNode right = NodeRight(mn);
-                mn.adjacents.Add(Direction.Right, right);
-                right.adjacents.Add(Direction.Left, mn);
+                mn.adjacents[Direction.Right] = right;
+                right.adjacents[Direction.Left] = mn;
             }
         }
-        for (int i = 0; i < nodes.Count; ++i)
+        /*for (int i = 0; i < nodes.Count; ++i)
         {
             for (int j = i + 1; j < nodes.Count; ++j)
             {
@@ -248,6 +254,6 @@ public class Maze {
                     ConnectNodes(path[path.Count - 1], NodeInDirection(path[path.Count - 1], DirectionTo(path[path.Count - 1], j)));
                 }
             }
-        }
+        }*/
     }
 }
