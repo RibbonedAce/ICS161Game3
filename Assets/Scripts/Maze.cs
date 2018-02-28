@@ -5,13 +5,15 @@ using UnityEngine;
 public class Maze {
     private int height;             // The height of the map
     private int width;              // The width of the map
+    private float chance;           // The amount of walls to spawn
     public List<MapNode> nodes;     // The mapnodes that make up the map
 
     // A constructor taking height and width
-    public Maze (int nHeight, int nWidth)
+    public Maze (int nHeight, int nWidth, float nChance)
     {
         height = nHeight;
         width = nWidth;
+        chance = nChance;
         nodes = new List<MapNode>(height * width);
         for (int i = 0; i < nodes.Capacity; ++i)
         {
@@ -231,13 +233,13 @@ public class Maze {
         foreach (MapNode mn in nodes)
         {
             Vector2Int xy = PositionAt(mn);
-            if (xy.y < height - 1 && Random.Range(0, 2) == 1)
+            if (xy.y < height - 1 && Random.Range(0f, 1f) > chance)
             {
                 MapNode up = NodeAbove(mn);
                 mn.adjacents[Direction.Up] = up;
                 up.adjacents[Direction.Down] = mn;
             }
-            if (xy.x < width - 1 && Random.Range(0, 2) == 1)
+            if (xy.x < width - 1 && Random.Range(0f, 1f) > chance)
             {
                 MapNode right = NodeRight(mn);
                 mn.adjacents[Direction.Right] = right;
