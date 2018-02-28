@@ -219,10 +219,22 @@ public class Maze {
     // Find a path between two nodes, returning the closest one if possible
     private List<int> FindPath (int start, int end)
     {
-        List<int> result = new List<int> { start };
+        List<int> result = new List<int>();
+        List<int> visitedNodes = new List<int>();
+        FindPathOverride(start, end, result, visitedNodes);
         return result;
     }
-
+    
+    private void FindPathOverride(int start, int end, List<int> o, List<int> visited)
+    {
+        if (start != end)
+        {
+            if(nodes[start].adjacents[Direction.Up] != null)
+            {
+                visited.Add
+            }
+        }
+    }
     // Make a random map
     private void RandomizeMap ()
     {
