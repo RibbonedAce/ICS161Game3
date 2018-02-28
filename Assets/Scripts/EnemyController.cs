@@ -14,7 +14,7 @@ public class EnemyController : MonoBehaviour {
         }
         if (taken == null)
         {
-            taken = new List<Vector2Int>();
+            taken = new List<Vector2Int> { Vector2Int.zero };
         }
     }
 
