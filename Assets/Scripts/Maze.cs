@@ -221,17 +221,35 @@ public class Maze {
     {
         List<int> result = new List<int>();
         List<int> visitedNodes = new List<int>();
-        FindPathOverride(start, end, result, visitedNodes);
+        if (start != end)
+        {
+            result.Add(start);
+            visitedNodes.Add(start);
+            FindPathOverride(start, end, result, visitedNodes);
+        }
         return result;
     }
-    
+
     private void FindPathOverride(int start, int end, List<int> o, List<int> visited)
     {
         if (start != end)
         {
-            if(nodes[start].adjacents[Direction.Up] != null)
+            bool isStuck = true;
+            foreach (MapNode mn in nodes[start].adjacents.Values)
             {
-                visited.Add
+                if (mn != null && !visited.Contains(nodes.IndexOf(mn)))
+                {
+                    int newStart = nodes.IndexOf(mn);
+                    isStuck = false;
+                    o.Add(newStart);
+                    visited.Add(newStart);
+                    FindPathOverride(newStart, end, o, visited);
+                }
+            }
+            if (isStuck)
+            {
+                o.Remove(start);
+                FindPathOverride(o[o.Count - 1], end, o, visited);
             }
         }
     }
