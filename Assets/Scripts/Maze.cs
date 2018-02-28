@@ -231,7 +231,7 @@ public class Maze {
         {
             if(nodes[start].adjacents[Direction.Up] != null)
             {
-                visited.Add
+                //visited.Add
             }
         }
     }
