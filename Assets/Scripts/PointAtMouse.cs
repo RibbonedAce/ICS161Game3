@@ -29,7 +29,7 @@ public class PointAtMouse : MonoBehaviour {
         if (hold == KeyCode.None || Input.GetKey(hold))
         {
             Vector3 mouseAt = new Vector3(cam.ScreenToWorldPoint(Input.mousePosition).x, cam.ScreenToWorldPoint(Input.mousePosition).y, transform.position.z);
-            transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector3.right, mouseAt));
+            _rigidbody2D.MoveRotation(Vector2.SignedAngle(Vector3.right, mouseAt));
         }
 	}
 }

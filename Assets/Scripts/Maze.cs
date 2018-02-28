@@ -65,14 +65,14 @@ public class Maze {
     private int NodeLeft (int index)
     {
         Vector2Int xy = PositionAt(index);
-        return (index < 1 || index >= nodes.Count || xy.x < 1) ? -1 : index - 1;
+        return (index < 0 || index >= nodes.Count || xy.x < 1) ? -1 : index - 1;
     }
 
     // Get the index right of the given one in the map
     private int NodeRight (int index)
     {
         Vector2Int xy = PositionAt(index);
-        return (index < 1 || index >= nodes.Count || xy.x >= width) ? -1 : index + 1;
+        return (index < 0 || index >= nodes.Count || xy.x >= width) ? -1 : index + 1;
     }
 
     // Get the node above the given one in the map
@@ -94,7 +94,7 @@ public class Maze {
     {
         int index = nodes.IndexOf(mn);
         Vector2Int xy = PositionAt(index);
-        return (index < 1 || index >= nodes.Count || xy.x < 1) ? new MapNode() : nodes[index - 1];
+        return (index < 0 || index >= nodes.Count || xy.x < 1) ? new MapNode() : nodes[index - 1];
     }
 
     // Get the node right of the given one in the map
@@ -102,7 +102,7 @@ public class Maze {
     {
         int index = nodes.IndexOf(mn);
         Vector2Int xy = PositionAt(index);
-        return (index < 1 || index >= nodes.Count || xy.x >= width) ? new MapNode() : nodes[nodes.IndexOf(mn) + 1];
+        return (index < 0 || index >= nodes.Count || xy.x >= width) ? new MapNode() : nodes[nodes.IndexOf(mn) + 1];
     }
 
     // Get the node in a specified direction on the map
@@ -150,23 +150,23 @@ public class Maze {
         {
             if (xy2.y - xy1.y == 1)
             {
-                mn1.adjacents.Add(Direction.Up, mn2);
-                mn2.adjacents.Add(Direction.Down, mn1);
+                mn1.adjacents[Direction.Up] = mn2;
+                mn2.adjacents[Direction.Down] = mn1;
             }
             else if (xy2.y - xy1.y == -1)
             {
-                mn1.adjacents.Add(Direction.Down, mn2);
-                mn2.adjacents.Add(Direction.Up, mn1);
+                mn1.adjacents[Direction.Down] = mn2;
+                mn2.adjacents[Direction.Up] = mn1;
             }
             else if (xy2.x - xy1.x == -1)
             {
-                mn1.adjacents.Add(Direction.Left, mn2);
-                mn2.adjacents.Add(Direction.Right, mn1);
+                mn1.adjacents[Direction.Left] = mn2;
+                mn2.adjacents[Direction.Right] = mn1;
             }
             else if (xy2.x - xy1.x == 1)
             {
-                mn1.adjacents.Add(Direction.Right, mn2);
-                mn2.adjacents.Add(Direction.Left, mn1);
+                mn1.adjacents[Direction.Right] = mn2;
+                mn2.adjacents[Direction.Left] = mn1;
             }
         }
     }
@@ -180,23 +180,23 @@ public class Maze {
         {
             if (xy2.y - xy1.y == 1)
             {
-                nodes[mn1].adjacents.Add(Direction.Up, nodes[mn2]);
-                nodes[mn2].adjacents.Add(Direction.Down, nodes[mn1]);
+                nodes[mn1].adjacents[Direction.Up] = nodes[mn2];
+                nodes[mn2].adjacents[Direction.Down] = nodes[mn1];
             }
             else if (xy2.y - xy1.y == -1)
             {
-                nodes[mn1].adjacents.Add(Direction.Down, nodes[mn2]);
-                nodes[mn2].adjacents.Add(Direction.Up, nodes[mn1]);
+                nodes[mn1].adjacents[Direction.Down] = nodes[mn2];
+                nodes[mn2].adjacents[Direction.Up] = nodes[mn1];
             }
             else if (xy2.x - xy1.x == -1)
             {
-                nodes[mn1].adjacents.Add(Direction.Left, nodes[mn2]);
-                nodes[mn2].adjacents.Add(Direction.Right, nodes[mn1]);
+                nodes[mn1].adjacents[Direction.Left] = nodes[mn2];
+                nodes[mn2].adjacents[Direction.Right] = nodes[mn1];
             }
             else if (xy2.x - xy1.x == 1)
             {
-                nodes[mn1].adjacents.Add(Direction.Right, nodes[mn2]);
-                nodes[mn2].adjacents.Add(Direction.Left, nodes[mn1]);
+                nodes[mn1].adjacents[Direction.Right] = nodes[mn2];
+                nodes[mn2].adjacents[Direction.Left] = nodes[mn1];
             }
         }
     }
@@ -217,6 +217,169 @@ public class Maze {
     }
 
     // Find a path between two nodes, returning the closest one if possible
+    private List<int> FindPath (int start, int end)
+    {
+        List<List<int>> searches = new List<List<int>>();
+        foreach (MapNode mn in nodes[start].adjacents.Values)
+        {
+            if (mn != null)
+            {
+                searches.Add(FindPath(nodes.IndexOf(mn), end, new List<int> { start }));
+            }
+        }
+        List<int> bestSearch = new List<int>();
+        foreach (List<int> search in searches)
+        {
+            if (search[search.Count - 1] == end && (bestSearch.Count == 0 || search.Count < bestSearch.Count))
+            {
+                bestSearch = search;
+            }
+        }
+        if (bestSearch.Count == 0)
+        {
+            foreach (List<int> search in searches)
+            {
+                if (bestSearch.Count == 0 || GetDistance(search[search.Count - 1], end) < GetDistance(bestSearch[bestSearch.Count - 1], end))
+                {
+                    bestSearch = search;
+                }
+            }
+        }
+        bestSearch.Insert(0, start);
+        return bestSearch;
+    }
+
+    // Find a path between two nodes, returning the closest one if possible
+    private List<int> FindPath (int start, int end, List<int> searched)
+    {
+        List<int> newSearched = new List<int>(searched);
+        newSearched.Add(start);
+        List<List<int>> searches = new List<List<int>>();
+        foreach (MapNode mn in nodes[start].adjacents.Values)
+        {
+            if (mn != null && !searched.Contains(nodes.IndexOf(mn)))
+            {
+                searches.Add(FindPath(nodes.IndexOf(mn), end, newSearched));
+            }
+        }
+        List<int> bestSearch = new List<int>();
+        foreach (List<int> search in searches)
+        {
+            if (search[search.Count - 1] == end && (bestSearch.Count == 0 || search.Count < bestSearch.Count))
+            {
+                bestSearch = search;
+            }
+        }
+        if (bestSearch.Count == 0)
+        {
+            foreach (List<int> search in searches)
+            {
+                if (bestSearch.Count == 0 || GetDistance(search[search.Count - 1], end) < GetDistance(bestSearch[bestSearch.Count - 1], end))
+                {
+                    bestSearch = search;
+                }
+            }
+        }
+        bestSearch.Insert(0, start);
+        return bestSearch;
+    }
+
+    // Find a path between two nodes, returning the closest one if possible
+    private List<int> FindPathFast (int start, int end)
+    {
+        List<List<int>> searches = new List<List<int>>();
+        foreach (MapNode mn in nodes[start].adjacents.Values)
+        {
+            if (mn != null)
+            {
+                List<int> search = FindPathFast(nodes.IndexOf(mn), end, new List<int> { start });
+                if (search[search.Count - 1] == end)
+                {
+                    search.Insert(0, start);
+                    return search;
+                }
+                else
+                {
+                    searches.Add(search);
+                }
+            }
+        }
+        List<int> bestSearch = new List<int>();
+        foreach (List<int> search in searches)
+        {
+            if (bestSearch.Count == 0 || GetDistance(search[search.Count - 1], end) < GetDistance(bestSearch[bestSearch.Count - 1], end))
+            {
+                bestSearch = search;
+            }
+        }
+        bestSearch.Insert(0, start);
+        return bestSearch;
+    }
+
+    // Find a path between two nodes, returning the closest one if possible
+    private List<int> FindPathFast(int start, int end, List<int> searched)
+    {
+        List<int> newSearched = new List<int>(searched);
+        newSearched.Add(start);
+        List<List<int>> searches = new List<List<int>>();
+        foreach (MapNode mn in nodes[start].adjacents.Values)
+        {
+            if (mn != null && !searched.Contains(nodes.IndexOf(mn)))
+            {
+                List<int> search = FindPathFast(nodes.IndexOf(mn), end, newSearched);
+                if (search[search.Count - 1] == end)
+                {
+                    search.Insert(0, start);
+                    return search;
+                }
+                else
+                {
+                    searches.Add(search);
+                }
+            }
+        }
+        List<int> bestSearch = new List<int>();
+        foreach (List<int> search in searches)
+        {
+            if (bestSearch.Count == 0 || GetDistance(search[search.Count - 1], end) < GetDistance(bestSearch[bestSearch.Count - 1], end))
+            {
+                bestSearch = search;
+            }
+        }
+        bestSearch.Insert(0, start);
+        return bestSearch;
+    }
+
+    // Find all connected nodes to the current one
+    private List<int> AllConnectedNodes (int start)
+    {
+        List<int> result = new List<int>();
+        List<int> search = new List<int> { start };
+        while (search.Count > 0)
+        {
+            int toSearch = search[0];
+            search.RemoveAt(0);
+            result.Add(toSearch);
+            foreach (MapNode mn in nodes[toSearch].adjacents.Values)
+            {
+                if (mn != null && !result.Contains(nodes.IndexOf(mn)))
+                {
+                    search.Add(nodes.IndexOf(mn));
+                }
+            }
+        }
+        return result;
+    }
+
+    // Get the distance between two nodes
+    private float GetDistance (int start, int end)
+    {
+        Vector2Int xys = PositionAt(start);
+        Vector2Int xye = PositionAt(end);
+        return Mathf.Sqrt(Mathf.Pow(xys.x - xye.x, 2) + Mathf.Pow(xys.y - xye.y, 2));
+    }
+
+    /*// Find a path between two nodes, returning the closest one if possible
     private List<int> FindPath (int start, int end)
     {
         List<int> result = new List<int>();
@@ -252,7 +415,8 @@ public class Maze {
                 FindPathOverride(o[o.Count - 1], end, o, visited);
             }
         }
-    }
+    }*/
+
     // Make a random map
     private void RandomizeMap ()
     {
@@ -276,16 +440,25 @@ public class Maze {
                 right.adjacents[Direction.Left] = mn;
             }
         }
-        /*for (int i = 0; i < nodes.Count; ++i)
+        List<List<int>> groups = new List<List<int>>();
+        for (int i = 0; i < nodes.Count; ++i)
         {
-            for (int j = i + 1; j < nodes.Count; ++j)
+            if (!Utilities.InAnyList(groups, i))
             {
-                List<int> path = FindPath(i, j);
-                if (path[path.Count - 1] != j)
-                {
-                    ConnectNodes(path[path.Count - 1], NodeInDirection(path[path.Count - 1], DirectionTo(path[path.Count - 1], j)));
-                }
+                groups.Add(AllConnectedNodes(i));
             }
-        }*/
+        }
+        for (int i = 1; i < groups.Count; ++i)
+        {
+            Vector2Int xy = PositionAt(groups[i][0]);
+            if (xy.y < 1)
+            {
+                ConnectNodes(groups[i][0], NodeLeft(groups[i][0]));
+            }
+            else
+            {
+                ConnectNodes(groups[i][0], NodeBelow(groups[i][0]));
+            }
+        }
     }
 }

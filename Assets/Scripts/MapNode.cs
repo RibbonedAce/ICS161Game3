@@ -5,7 +5,7 @@ using UnityEngine;
 public class MapNode {
     public Dictionary<Direction, MapNode> adjacents;    // The adjacent nodes
     
-    // A default constructor
+    // A constructor taking an index value
     public MapNode ()
     {
         adjacents = new Dictionary<Direction, MapNode>(4);
