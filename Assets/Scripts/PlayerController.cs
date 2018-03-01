@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(AudioSource))]
 public class PlayerController : MonoBehaviour {
     public Camera cam;                      // The camera to use for reference
     public KeyCode hold;                    // The key to hold down while using
@@ -17,11 +18,13 @@ public class PlayerController : MonoBehaviour {
     private Coroutine flashRoutine;         // The flashing coroutine to use
     private SpriteRenderer _spriteRenderer; // The Sprite Renderer component attached
     private Rigidbody2D _rigidbody2D;       // The Rigidbody component attached
+    private AudioSource _audioSource;       // The Audio Source component attached
 
     void Awake ()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _audioSource = GetComponent<AudioSource>();
         health = maxHealth;
         invincible = false;
         flashRoutine = null;
@@ -44,32 +47,33 @@ public class PlayerController : MonoBehaviour {
         }
         if (Input.GetAxisRaw("HFire") < 0 && !fired)
         {
-            fired = true;
-            Projectile p = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Projectile>();
-            p.SetDirection(Direction.Left);
+            Fire(Direction.Left);
         }
         else if (Input.GetAxisRaw("HFire") > 0 && !fired)
         {
-            fired = true;
-            Projectile p = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Projectile>();
-            p.SetDirection(Direction.Right);
+            Fire(Direction.Right);
         }
         else if (Input.GetAxisRaw("VFire") < 0 && !fired)
         {
-            fired = true;
-            Projectile p = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Projectile>();
-            p.SetDirection(Direction.Down);
+            Fire(Direction.Down);
         }
         else if (Input.GetAxisRaw("VFire") > 0 && !fired)
         {
-            fired = true;
-            Projectile p = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Projectile>();
-            p.SetDirection(Direction.Up);
+            Fire(Direction.Up);
         }
         else if (Input.GetAxisRaw("HFire") == 0 && Input.GetAxisRaw("VFire") == 0)
         {
             fired = false;
         }
+    }
+
+    // Fire a projectile in a direction
+    private void Fire (Direction d)
+    {
+        fired = true;
+        Projectile p = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Projectile>();
+        _audioSource.Play();
+        p.SetDirection(d);
     }
 
     // Change the health of the player

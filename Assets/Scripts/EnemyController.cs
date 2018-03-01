@@ -1,16 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour {
-    public static GameObject enemy; // The enemy Game Object to spawn
+    public static List<GameObject> enemies; // The enemy Game Object to spawn
     public static List<Vector2Int> taken;   // The spots already taken
 
     void Awake ()
     {
-        if (enemy == null)
+        if (enemies == null)
         {
-            enemy = Resources.Load<GameObject>("Prefabs/Enemy");
+            enemies = new List<GameObject>();
+            DirectoryInfo d = new DirectoryInfo("Assets/Resources/Prefabs");
+            FileInfo[] files = d.GetFiles("Enemy*.prefab");
+            foreach (FileInfo f in files)
+            {
+                enemies.Add(Resources.Load<GameObject>("Prefabs/" + f.Name.Substring(0, f.Name.Length - 7)));
+            }
         }
         if (taken == null)
         {
@@ -24,7 +31,7 @@ public class EnemyController : MonoBehaviour {
 		for (int i = 0; i < GameController.height * GameController.width / 10; ++i)
         {
             Vector2Int pos = GetNewVector();
-            Instantiate(enemy, new Vector3(pos.x, pos.y, 0), Quaternion.identity);
+            Instantiate(enemies[Random.Range(0, enemies.Count)], new Vector3(pos.x, pos.y, 0), Quaternion.identity);
         }
 	}
 	

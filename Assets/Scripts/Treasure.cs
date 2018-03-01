@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class Treasure : MonoBehaviour {
+    public GameObject afterEffect;      // The after-effect to use
     private Rigidbody2D _rigidbody2D;   // The Rigidbody component attached
 
     void Awake ()
@@ -31,6 +32,8 @@ public class Treasure : MonoBehaviour {
         if (collision.collider.CompareTag("Player"))
         {
             GameController.won = true;
+            AudioSource a = Instantiate(afterEffect).GetComponent<AudioSource>();
+            a.pitch = 1.5f;
             Destroy(gameObject);
         }
     }

@@ -720,42 +720,16 @@ Prefab:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1522363808}
-    - target: {fileID: 1830339438231516, guid: 01f22584ce125064b898d639b274ade0, type: 2}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1079758690477210, guid: 01f22584ce125064b898d639b274ade0, type: 2}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1696866547040568, guid: 01f22584ce125064b898d639b274ade0, type: 2}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1965569511551140, guid: 01f22584ce125064b898d639b274ade0, type: 2}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 114580232705436280, guid: 01f22584ce125064b898d639b274ade0,
+    - target: {fileID: 82559032806749276, guid: 01f22584ce125064b898d639b274ade0,
         type: 2}
-      propertyPath: speed
-      value: 3
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 61901824124560568, guid: 01f22584ce125064b898d639b274ade0,
+    - target: {fileID: 82559032806749276, guid: 01f22584ce125064b898d639b274ade0,
         type: 2}
-      propertyPath: m_Size.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 61901824124560568, guid: 01f22584ce125064b898d639b274ade0,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 212457076436632360, guid: 01f22584ce125064b898d639b274ade0,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: dddf0ec7f918ec143b51ac6993fb3344, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 01f22584ce125064b898d639b274ade0, type: 2}
   m_IsPrefabParent: 0
@@ -937,22 +911,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1983111829 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1226059354405370, guid: d37a47aec942af94c947f95ccd45ae72,
-    type: 2}
-  m_PrefabInternal: {fileID: 1381198671}
---- !u!114 &1983111834
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1983111829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 028c6d5cfd7b2e7448bd8a9591231a36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2025387564
 GameObject:
   m_ObjectHideFlags: 0
