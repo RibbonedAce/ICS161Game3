@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Utilities {
+public static class Utilities {
     
     // Return if an element is contained in any of the lists provided
     public static bool InAnyList<T> (List<List<T>> lists, T item)

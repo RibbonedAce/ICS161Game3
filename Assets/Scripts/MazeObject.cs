@@ -3,31 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MazeObject : MonoBehaviour {
-    [Range(0f, 1f)]
-    public float chance;    // The difficulty of the maze (how many walls spawn)
+    //[Range(0f, 1f)]
+    //public float chance;    // The difficulty of the maze (how many walls spawn)
     public GameObject wall; // The wall prefab
     private Maze maze;      // The maze that the object uses
 
-    void Awake ()
+    // Use this for initialization
+    void Start ()
     {
-        maze = new Maze(GameController.height, GameController.width, chance);
+        maze = new Maze(GameController.height, GameController.width);
         SpawnWalls();
     }
-
-    // Use this for initialization
-    void Start () {
-		
-	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		
 	}
+
     public Maze GetMaze()
     {
         Maze temp = maze;
         return temp;
     }
+
     // Spawn walls depending on the maze
     private void SpawnWalls ()
     {

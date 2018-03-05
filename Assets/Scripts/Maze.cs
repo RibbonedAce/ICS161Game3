@@ -3,21 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Maze {
-    private int height;             // The height of the map
-    private int width;              // The width of the map
+    private int height;                 // The height of the map
+    private int width;                  // The width of the map
     public static int _width;
     public static int _height;
     private float chance;           // The amount of walls to spawn
-    public static List<MapNode> nodes;     // The mapnodes that make up the map
+    public static List<MapNode> nodes;  // The mapnodes that make up the map
     private static bool foundDest = false;
     // A constructor taking height and width
-    public Maze (int nHeight, int nWidth, float nChance)
+    public Maze (int nHeight, int nWidth)
     {
         height = nHeight;
         width = nWidth;
         _width = width;
         _height = height;
-        chance = nChance;
+        //chance = nChance;
+        chance = ((float)GameController.difficulty + 1) / 4;
         nodes = new List<MapNode>(height * width);
         for (int i = 0; i < nodes.Capacity; ++i)
         {
