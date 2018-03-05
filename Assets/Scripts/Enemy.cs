@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour {
     public GameObject afterEffect;      // The after-effect to use
     private Rigidbody2D _rigidbody2D;   // The Rigidbody component attached
     private AudioSource _audioSource;  // The Audio Source component attached
+
+    //Added vars for Smart Enemy------------
     [Range(0,1)]
     public float _speed;
     private List<int> myPath;
@@ -21,6 +23,8 @@ public class Enemy : MonoBehaviour {
     private int index;
     private int random;
     private bool reverse;
+    //--------------------------------------
+
     void Awake ()
     {      
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -47,7 +51,7 @@ public class Enemy : MonoBehaviour {
 
     }
 	
-	// Update is called once per frame
+	// Update is called for smart enemy only
 	void Update()
     {
         if (this.gameObject.tag == "SmartEnemy")
@@ -79,6 +83,9 @@ public class Enemy : MonoBehaviour {
         Instantiate(afterEffect);
         Destroy(gameObject);
     }
+
+
+    //=================================== Smart Enemy Functions Below ============================================================
     private void moveForward()
     {
         if (index < myPath.Count)
