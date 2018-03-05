@@ -6,7 +6,6 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour {
     public static List<GameObject> enemies; // The enemy Game Object to spawn
     public static List<Vector2Int> taken;   // The spots already taken
-
     void Awake ()
     {
         if (enemies == null)
@@ -34,7 +33,6 @@ public class EnemyController : MonoBehaviour {
             Instantiate(enemies[Random.Range(0, enemies.Count)], new Vector3(pos.x, pos.y, 0), Quaternion.identity);
         }
 	}
-	
 	// Update is called once per frame
 	void Update ()
     {

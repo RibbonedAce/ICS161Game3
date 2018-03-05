@@ -23,7 +23,11 @@ public class MazeObject : MonoBehaviour {
 	void Update () {
 		
 	}
-
+    public Maze GetMaze()
+    {
+        Maze temp = maze;
+        return temp;
+    }
     // Spawn walls depending on the maze
     private void SpawnWalls ()
     {

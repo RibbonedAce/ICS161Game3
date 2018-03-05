@@ -5,14 +5,18 @@ using UnityEngine;
 public class Maze {
     private int height;             // The height of the map
     private int width;              // The width of the map
+    public static int _width;
+    public static int _height;
     private float chance;           // The amount of walls to spawn
-    public List<MapNode> nodes;     // The mapnodes that make up the map
-    private bool foundDest = false;
+    public static List<MapNode> nodes;     // The mapnodes that make up the map
+    private static bool foundDest = false;
     // A constructor taking height and width
     public Maze (int nHeight, int nWidth, float nChance)
     {
         height = nHeight;
         width = nWidth;
+        _width = width;
+        _height = height;
         chance = nChance;
         nodes = new List<MapNode>(height * width);
         for (int i = 0; i < nodes.Capacity; ++i)
@@ -21,7 +25,10 @@ public class Maze {
         }
         RandomizeMap();
     }
-
+    public static List<MapNode> getNodesList()
+    {
+        return new List<MapNode>(nodes); 
+    }
     // Return the maze nodes
     public List<MapNode> GetNodes ()
     {
@@ -380,7 +387,7 @@ public class Maze {
     }
 
     // Find a path between two nodes, returning the closest one if possible
-    private List<int> FindPathOld (int start, int end)
+    public static List<int> FindPathOld (int start, int end)
     {
         List<int> result = new List<int>();
         List<int> visitedNodes = new List<int>();
@@ -397,20 +404,19 @@ public class Maze {
         return result;
     }
 
-    private void CountNodesInTree(int start, int end, List<int> c)
+    public static void CountNodesInTree(int start, int end, List<int> c)
     {
         foreach(MapNode mn in nodes[start].adjacents.Values)
         {
             if(nodes.IndexOf(mn) != -1 && !c.Contains(nodes.IndexOf(mn)))
             {
-                Debug.Log(c.Count + 1);
                 c.Add(start);
                 CountNodesInTree(nodes.IndexOf(mn), end, c);
             }
         }
     }
 
-    private void FindPathOverride(int start, int end, List<int> o, List<int> visited,int max)
+    public static void FindPathOverride(int start, int end, List<int> o, List<int> visited,int max)
     {
         if (start != end)
         {
