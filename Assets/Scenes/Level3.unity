@@ -422,6 +422,10 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: ea6da4a0ebadb704691a6fa2d03f817b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ea6da4a0ebadb704691a6fa2d03f817b, type: 3}
   m_IsPrefabParent: 0
@@ -882,7 +886,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4167542135836456, guid: d37a47aec942af94c947f95ccd45ae72, type: 2}
       propertyPath: m_LocalScale.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 61928670092969474, guid: d37a47aec942af94c947f95ccd45ae72,
         type: 2}
@@ -896,6 +900,36 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1226059354405370, guid: d37a47aec942af94c947f95ccd45ae72, type: 2}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212436509577264378, guid: d37a47aec942af94c947f95ccd45ae72,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300014, guid: 33ced3c9d854e354fb0237a599d2da70,
+        type: 3}
+    - target: {fileID: 212436509577264378, guid: d37a47aec942af94c947f95ccd45ae72,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212436509577264378, guid: d37a47aec942af94c947f95ccd45ae72,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212436509577264378, guid: d37a47aec942af94c947f95ccd45ae72,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4167542135836456, guid: d37a47aec942af94c947f95ccd45ae72, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212436509577264378, guid: d37a47aec942af94c947f95ccd45ae72,
+        type: 2}
+      propertyPath: m_MaskInteraction
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

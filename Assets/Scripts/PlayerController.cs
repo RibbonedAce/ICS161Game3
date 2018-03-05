@@ -104,9 +104,9 @@ public class PlayerController : MonoBehaviour {
 
     void OnCollisionEnter2D (Collision2D collision)
     {
-        if (collision.collider.gameObject.CompareTag("Enemy") && !invincible)
+        if (collision.collider.CompareTag("Enemy") && !invincible)
         {
-            ChangeHealth(-1);
+            ChangeHealth(-1 * collision.collider.GetComponent<Enemy>().damage);
             invincible = true;
             flashRoutine = StartCoroutine(Flash());
             Invoke("RemoveInvincibility", 2);
