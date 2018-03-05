@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Maze {
+    public static Maze instance;
     private int height;                 // The height of the map
     private int width;                  // The width of the map
     public static int _width;
