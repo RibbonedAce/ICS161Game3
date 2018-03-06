@@ -785,6 +785,16 @@ Prefab:
       propertyPath: maxHealth
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114580232705436280, guid: 01f22584ce125064b898d639b274ade0,
+        type: 2}
+      propertyPath: shootClip
+      value: 
+      objectReference: {fileID: 8300000, guid: dddf0ec7f918ec143b51ac6993fb3344, type: 3}
+    - target: {fileID: 114580232705436280, guid: 01f22584ce125064b898d639b274ade0,
+        type: 2}
+      propertyPath: hurtClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6c2297de8f20d2f449508a9fc8110abb, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 01f22584ce125064b898d639b274ade0, type: 2}
   m_IsPrefabParent: 0

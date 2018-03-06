@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour {
     public int maxHealth;                   // The maximum health of the player
     public int health;                      // The current health of the playe
     public GameObject projectile;           // The projectile to use for firing
+    public AudioClip shootClip;             // The clip to play when shooting
+    public AudioClip hurtClip;              // The clip to play when being hurt
     private bool invincible;                // Whether the player is invincible
     private bool fired;                     // If the player has fired
     private Coroutine flashRoutine;         // The flashing coroutine to use
@@ -72,6 +74,7 @@ public class PlayerController : MonoBehaviour {
     {
         fired = true;
         Projectile p = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Projectile>();
+        _audioSource.clip = shootClip;
         _audioSource.Play();
         p.SetDirection(d);
     }
@@ -83,6 +86,11 @@ public class PlayerController : MonoBehaviour {
         if (health <= 0)
         {
             GameController.status = GameStatus.Lost;
+        }
+        if (change < 0)
+        {
+            _audioSource.clip = hurtClip;
+            _audioSource.Play();
         }
     }
 
