@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour {
         health = maxHealth;
         invincible = false;
         flashRoutine = null;
+        GetComponent<AudioSource>().volume = GameController.volume;
     }
 
     // Use this for initialization
@@ -65,6 +66,7 @@ public class PlayerController : MonoBehaviour {
         {
             fired = false;
         }
+        GetComponent<AudioSource>().volume = GameController.volume;
     }
 
     // Fire a projectile in a direction

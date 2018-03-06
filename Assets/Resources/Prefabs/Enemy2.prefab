@@ -87,7 +87,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.125, y: 0.125}
+  m_Size: {x: 0.1, y: 0.1}
   m_EdgeRadius: 0
 --- !u!82 &82603162548996546
 AudioSource:
@@ -184,6 +184,7 @@ MonoBehaviour:
   health: 0
   afterEffect: {fileID: 1709958390146852, guid: ede8714247eb0904ab68a393dacc823c,
     type: 2}
+  _speed: 0
 --- !u!212 &212976288536649474
 SpriteRenderer:
   m_ObjectHideFlags: 1

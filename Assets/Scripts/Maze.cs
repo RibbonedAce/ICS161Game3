@@ -14,6 +14,7 @@ public class Maze {
     // A constructor taking height and width
     public Maze (int nHeight, int nWidth)
     {
+        instance = this;
         height = nHeight;
         width = nWidth;
         _width = width;

@@ -9,6 +9,7 @@ public class LevelController : MonoBehaviour {
     {
         GameController.height = size;
         GameController.width = size;
+        GetComponent<AudioSource>().volume = GameController.volume;
     }
 
     // Use this for initialization
@@ -20,6 +21,6 @@ public class LevelController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		
-	}
+        GetComponent<AudioSource>().volume = GameController.volume;
+    }
 }

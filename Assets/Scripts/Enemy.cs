@@ -29,6 +29,7 @@ public class Enemy : MonoBehaviour {
     {      
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _audioSource = GetComponent<AudioSource>();
+        GetComponent<AudioSource>().volume = GameController.volume;
         health = maxHealth;
         if(this.gameObject.tag == "SmartEnemy")
         {
@@ -54,13 +55,14 @@ public class Enemy : MonoBehaviour {
 	// Update is called for smart enemy only
 	void Update()
     {
-        if (this.gameObject.tag == "SmartEnemy")
+        if (this.gameObject.tag == "SmartEnemy" && !MenuController.isGamePaused)
         {
             if (!reverse)
                 moveForward();
             else
                 moveBackward();
         }
+        GetComponent<AudioSource>().volume = GameController.volume;
     }
 
     // Changes health of the enemy

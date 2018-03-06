@@ -7,6 +7,11 @@ public class PlayThenDie : MonoBehaviour {
 
     void Awake ()
     {
+        GetComponent<AudioSource>().volume = GameController.volume;
         Destroy(gameObject, GetComponent<AudioSource>().clip.length);
+    }
+    private void Update()
+    {
+        GetComponent<AudioSource>().volume = GameController.volume;
     }
 }
