@@ -8,6 +8,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour {
     public int maxHealth;               // The maximum health of the enemy
     public int health;                  // The health of the enemy
+    public int damage;                  // The damage done to the player
     //public int range;                   // The range to be randomly placed
     public GameObject afterEffect;      // The after-effect to use
     private Rigidbody2D _rigidbody2D;   // The Rigidbody component attached
