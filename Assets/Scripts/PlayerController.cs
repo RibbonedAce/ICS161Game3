@@ -80,6 +80,10 @@ public class PlayerController : MonoBehaviour {
     private void ChangeHealth (int change)
     {
         health = Mathf.Min(Mathf.Max(0, health + change), maxHealth);
+        if (health <= 0)
+        {
+            GameController.status = GameStatus.Lost;
+        }
     }
 
     // Change invincibility status to false

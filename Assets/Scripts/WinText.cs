@@ -3,10 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Text))]
 public class WinText : MonoBehaviour {
+    private Text _text; // The Text component attached
 
-	// Use this for initialization
-	void Start ()
+    void Awake ()
+    {
+        _text = GetComponent<Text>();
+    }
+
+    // Use this for initialization
+    void Start ()
     {
 		
 	}
@@ -14,13 +21,17 @@ public class WinText : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		if (GameController.won)
+		if (GameController.status == GameStatus.Won)
         {
-            GetComponent<Text>().text = "WON";
+            _text.text = "WON";
+        }
+        else if (GameController.status == GameStatus.Lost)
+        {
+            _text.text = "LOST";
         }
         else
         {
-            GetComponent<Text>().text = "";
+            _text.text = "";
         }
 	}
 }
