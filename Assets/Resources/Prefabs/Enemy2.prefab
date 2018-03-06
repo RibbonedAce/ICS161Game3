@@ -180,10 +180,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 368e4edab7f81364699342849dac9978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 1
   health: 0
+  damage: 3
   afterEffect: {fileID: 1709958390146852, guid: ede8714247eb0904ab68a393dacc823c,
     type: 2}
+  _speed: 0
 --- !u!212 &212976288536649474
 SpriteRenderer:
   m_ObjectHideFlags: 1
