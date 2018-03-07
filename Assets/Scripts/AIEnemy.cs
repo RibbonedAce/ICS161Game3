@@ -31,8 +31,8 @@ public class AIEnemy : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Move();
-        if (index == myPath.Count)
-            MenuController.instance.GameLost();
+        //if (index == myPath.Count)
+        //    MenuController.instance.GameLost();
 	}
     void getLocations()
     {
