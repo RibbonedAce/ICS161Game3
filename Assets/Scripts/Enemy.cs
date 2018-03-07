@@ -39,9 +39,9 @@ public class Enemy : MonoBehaviour {
             reverse = false;    
             Taken = EnemyController.taken;
             myNodes = Maze.nodes;
-            notTaken = new List<int>(myNodes.Count - Taken.Count);
+            notTaken = new List<int>();
             AddNotTakenNodes();
-            random = Random.Range(1, notTaken.Count - 1);
+            random = Random.Range(notTaken.Count/2,notTaken.Count - 1);
             myPath = Maze.FindPathOld(notTaken[0],notTaken[random]);
             Vector3 temp = GetNodePosition(myPath[0]);
             transform.position = new Vector3(temp.x,temp.y,0);

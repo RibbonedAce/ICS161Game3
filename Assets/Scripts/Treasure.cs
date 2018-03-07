@@ -11,6 +11,10 @@ public class Treasure : MonoBehaviour {
     public Vector2Int pos;
     void Awake ()
     {
+        for(int i = 0; i < GameController.KillCountEnemy.Count; i++)
+        {
+            GameController.KillCountEnemy[i] = 0;
+        }
         instance = this;
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }

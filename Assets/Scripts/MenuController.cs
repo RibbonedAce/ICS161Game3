@@ -72,8 +72,10 @@ public class MenuController : MonoBehaviour {
         text[0].text = "X " + GameController.KillCountEnemy[0].ToString();
         text[1].text = "X " + GameController.KillCountEnemy[1].ToString();
         text[2].text = "X " + GameController.KillCountEnemy[2].ToString();
-        if(SceneManager.GetActiveScene().buildIndex < 3)
+        if (SceneManager.GetActiveScene().buildIndex < 3)
             Invoke("ChangeScene", 3.5f);
+        else
+            Invoke("MainMenu", 3.5f);
     }
     public void GameLost()
     {
