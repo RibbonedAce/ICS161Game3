@@ -83,6 +83,12 @@ public class Enemy : MonoBehaviour {
     {
         Instantiate(afterEffect);
         Destroy(gameObject);
+        if(gameObject.name == "Enemy1")
+            GameController.KillCountEnemy1++;
+        else if (gameObject.name == "Enemy2")
+            GameController.KillCountEnemy2++;
+        else if (gameObject.name == "Enemy3")
+            GameController.KillCountEnemy3++;
     }
 
 
