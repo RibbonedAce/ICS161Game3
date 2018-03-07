@@ -7,6 +7,8 @@ public class MenuController : MonoBehaviour {
     public GameObject slider;
     public GameObject canvas;
     public static bool isGamePaused;
+    public Image WinImage;
+    public List<Text> text;
     // Use this for initialization
     private void Awake()
     {
@@ -26,6 +28,13 @@ public class MenuController : MonoBehaviour {
                 isGamePaused = true;
             }
             else Resume();
+        }
+        if(GameController.won)
+        {
+            text[0].text = "X " + GameController.KillCountEnemy1.ToString();
+            text[1].text = "X " + GameController.KillCountEnemy2.ToString();
+            text[2].text = "X " + GameController.KillCountEnemy3.ToString();
+            WinImage.enabled = true;
         }
     }
     public void ExitGame()
