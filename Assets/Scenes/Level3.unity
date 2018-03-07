@@ -520,7 +520,7 @@ Prefab:
     - target: {fileID: 114950690976332298, guid: b8724a22175053f42a78a79cf76454d9,
         type: 2}
       propertyPath: size
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1081970896450394, guid: d56de2495778fa64b9c7cd334597191a, type: 2}
       propertyPath: m_IsActive
@@ -530,7 +530,7 @@ Prefab:
         type: 2}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 65f825c6311554b12b266082538c8683, type: 3}
+      objectReference: {fileID: 8300000, guid: 562194d8b08604298a5b299212a5d941, type: 3}
     - target: {fileID: 114802699174937606, guid: b8724a22175053f42a78a79cf76454d9,
         type: 2}
       propertyPath: SmartEnemy
@@ -752,12 +752,12 @@ Prefab:
     - target: {fileID: 224863309530314288, guid: 1e09ecb92fba3de47b4d416b2ac6cd79,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 208.20001
+      value: 192.29999
       objectReference: {fileID: 0}
     - target: {fileID: 224863309530314288, guid: 1e09ecb92fba3de47b4d416b2ac6cd79,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -217
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224863309530314288, guid: 1e09ecb92fba3de47b4d416b2ac6cd79,
         type: 2}
