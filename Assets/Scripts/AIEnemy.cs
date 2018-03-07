@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class AIEnemy : MonoBehaviour {
 
     // Use this for initialization
@@ -64,13 +64,12 @@ public class AIEnemy : MonoBehaviour {
         {
             Vector3 res = new Vector3(PositionAtIndex(myPath[index]).x, PositionAtIndex(myPath[index]).y, 0);
             Vector3 offset = res - transform.position;
-            _rigidbody2D.MovePosition(transform.position + offset * _speed * Time.deltaTime);
+            _rigidbody2D.MovePosition(transform.position + offset * (_speed + (2.5f * (float)(GameController.difficulty)) * Time.deltaTime));
             if (transform.position == res)
                  ++index;
         }
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
-
     }
 }
