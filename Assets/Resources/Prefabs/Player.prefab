@@ -272,8 +272,8 @@ MonoBehaviour:
   cam: {fileID: 0}
   hold: 0
   speed: 3
-  maxHealth: 2
-  health: 2
+  maxHealth: 5
+  health: 5
   projectile: {fileID: 1661505971783394, guid: ae867d32adf015b4bb194b923d0581c4, type: 2}
 --- !u!212 &212457076436632360
 SpriteRenderer:

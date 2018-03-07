@@ -8,6 +8,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour {
     public int maxHealth;               // The maximum health of the enemy
     public int health;                  // The health of the enemy
+    public int damage;                  // The damage the enemy deals
     //public int range;                   // The range to be randomly placed
     public GameObject afterEffect;      // The after-effect to use
     private Rigidbody2D _rigidbody2D;   // The Rigidbody component attached
@@ -73,8 +74,6 @@ public class Enemy : MonoBehaviour {
         {
             Die();
         }
-        if (this.gameObject.tag == "SmartEnemy")
-        { Debug.Log(health); }
         _audioSource.pitch = 2 - (float)health / maxHealth;
         _audioSource.Play();
     }
