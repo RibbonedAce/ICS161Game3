@@ -74,8 +74,11 @@ public class Enemy : MonoBehaviour {
         {
             Die();
         }
-        _audioSource.pitch = 2 - (float)health / maxHealth;
-        _audioSource.Play();
+        else
+        {
+            _audioSource.pitch = 2 - (float)health / maxHealth;
+            _audioSource.Play();
+        }
     }
 
     // Called when the enemy dies

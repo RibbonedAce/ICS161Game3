@@ -4,14 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class HeartController : MonoBehaviour {
-    public HeartController instance;    // The instance to reference
-    public PlayerController player;     // The player to get the health from
-    public Transform canvas;            // The canvas to place the hearts on
-    public GameObject heart;            // The heart to spawn
-    private List<GameObject> hearts;    // The hearts on screen
+    public static HeartController instance; // The instance to reference
+    public PlayerController player;         // The player to get the health from
+    public Transform canvas;                // The canvas to place the hearts on
+    public GameObject heart;                // The heart to spawn
+    private List<GameObject> hearts;        // The hearts on screen
 
     void Awake ()
     {
+        instance = this;
         hearts = new List<GameObject>();
     }
 
