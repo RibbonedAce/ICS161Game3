@@ -30,7 +30,7 @@ public class MenuController : MonoBehaviour {
                 canvas[0].GetComponent<Canvas>().enabled = true;
                 isGamePaused = true;
             }
-            else Resume();
+            else Resume(); 
         }
     }
     public void ExitGame()
