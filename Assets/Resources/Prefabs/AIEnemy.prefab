@@ -22,11 +22,11 @@ GameObject:
   - component: {fileID: 50970115200051628}
   - component: {fileID: 61529039452065966}
   - component: {fileID: 212753113598857250}
-  - component: {fileID: 114124119493778636}
   - component: {fileID: 82181280439210564}
+  - component: {fileID: 114690502870532506}
   m_Layer: 0
-  m_Name: Enemy3
-  m_TagString: SmartEnemy
+  m_Name: AIEnemy
+  m_TagString: AIEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -169,7 +169,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &114124119493778636
+--- !u!114 &114690502870532506
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -177,15 +177,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1756710531198426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368e4edab7f81364699342849dac9978, type: 3}
+  m_Script: {fileID: 11500000, guid: 25eca56cfbe3e43449a5a0a4264c839e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
-  health: 5
-  damage: 1
   afterEffect: {fileID: 1709958390146852, guid: ede8714247eb0904ab68a393dacc823c,
     type: 2}
-  _speed: 0.2
+  _speed: 28.9
 --- !u!212 &212753113598857250
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -221,7 +218,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: ffbbf677caa71154490c25d0220b6f31, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.76551723, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

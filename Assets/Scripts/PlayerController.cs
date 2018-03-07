@@ -19,16 +19,19 @@ public class PlayerController : MonoBehaviour {
     private SpriteRenderer _spriteRenderer; // The Sprite Renderer component attached
     private Rigidbody2D _rigidbody2D;       // The Rigidbody component attached
     private AudioSource _audioSource;       // The Audio Source component attached
+    public Vector2Int myPos;
 
     void Awake ()
     {
+        myPos = new Vector2Int((int)transform.position.x, (int)transform.position.y);
+        EnemyController.taken.Add(myPos);
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _audioSource = GetComponent<AudioSource>();
         health = maxHealth;
         invincible = false;
         flashRoutine = null;
-        GetComponent<AudioSource>().volume = GameController.volume;
+        GetComponent<AudioSource>().volume = GameController.volume;  
     }
 
     // Use this for initialization
