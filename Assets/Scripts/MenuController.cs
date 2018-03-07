@@ -31,11 +31,11 @@ public class MenuController : MonoBehaviour {
         }
         if(GameController.status == GameStatus.Won)
         {
+            WinImage.SetActive(true);
             text[0].text = "X " + GameController.KillCountEnemy1.ToString();
             text[1].text = "X " + GameController.KillCountEnemy2.ToString();
             text[2].text = "X " + GameController.KillCountEnemy3.ToString();
-            WinImage.SetActive(true);
-            if(SceneManager.GetActiveScene().buildIndex < 3)
+            if (SceneManager.GetActiveScene().buildIndex < 3)
                 Invoke("ChangeScene",2.0f);
         }
     }
