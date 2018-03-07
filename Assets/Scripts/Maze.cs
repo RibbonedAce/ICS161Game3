@@ -227,7 +227,7 @@ public class Maze {
     }
 
     // Find a path between two nodes, returning the closest one if possible
-    private List<int> FindPath (int start, int end)
+    public List<int> FindPath (int start, int end)
     {
         List<List<int>> searches = new List<List<int>>();
         foreach (MapNode mn in nodes[start].adjacents.Values)

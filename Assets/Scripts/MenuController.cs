@@ -79,12 +79,15 @@ public class MenuController : MonoBehaviour {
     }
     public void GameLost()
     {
+        if (GameController.status == GameStatus.Won)
+            return;
         GameController.status = GameStatus.Lost;
         LostImage.SetActive(true);
         Invoke("RestartLevel",3.0f);
     }
-    private void RestartLevel()
+    public void RestartLevel()
     {
+        Resume();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

@@ -129,4 +129,14 @@ public class PlayerController : MonoBehaviour {
             Invoke("RemoveInvincibility", 2);
         }
     }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.tag == "SmartEnemy")
+        {
+            ChangeHealth(-1 * other.GetComponent<Enemy>().damage);
+            invincible = true;
+            flashRoutine = StartCoroutine(Flash());
+            Invoke("RemoveInvincibility", 2);
+        }
+    }
 }
