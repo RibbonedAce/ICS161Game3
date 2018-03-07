@@ -14,7 +14,7 @@ public class WinText : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		if (GameController.won)
+		if (GameController.status == GameStatus.Won)
         {
             GetComponent<Text>().text = "WON";
         }

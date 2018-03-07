@@ -31,7 +31,7 @@ public class Treasure : MonoBehaviour {
     {
         if (collision.collider.CompareTag("Player"))
         {
-            GameController.won = true;
+            GameController.status = GameStatus.Won;
             AudioSource a = Instantiate(afterEffect).GetComponent<AudioSource>();
             a.pitch = 1.5f;
             Destroy(gameObject);

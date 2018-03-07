@@ -29,7 +29,7 @@ public class MenuController : MonoBehaviour {
             }
             else Resume();
         }
-        if(GameController.won)
+        if(GameController.status == GameStatus.Won)
         {
             text[0].text = "X " + GameController.KillCountEnemy1.ToString();
             text[1].text = "X " + GameController.KillCountEnemy2.ToString();
