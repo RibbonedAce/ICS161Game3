@@ -86,6 +86,14 @@ public class PlayerController : MonoBehaviour {
         {
             GameController.status = GameStatus.Lost;
         }
+        if (change < 0)
+        {
+            HeartController.instance.DeleteHearts(Mathf.Abs(change));
+        }
+        else
+        {
+            HeartController.instance.AddHearts(Mathf.Abs(change));
+        }
     }
 
     // Change invincibility status to false
@@ -112,7 +120,7 @@ public class PlayerController : MonoBehaviour {
     {
         if ((collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("SmartEnemy")) && !invincible)
         {
-            ChangeHealth(collision.collider.GetComponent<Enemy>().damage);
+            ChangeHealth(-1 * collision.collider.GetComponent<Enemy>().damage);
             invincible = true;
             flashRoutine = StartCoroutine(Flash());
             Invoke("RemoveInvincibility", 2);
