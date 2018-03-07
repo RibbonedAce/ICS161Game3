@@ -10,6 +10,7 @@ TagManager:
   - Wall
   - Treasure
   - AIEnemy
+  - PatrolEnemy
   layers:
   - Default
   - TransparentFX

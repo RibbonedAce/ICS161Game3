@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour {
         health = Mathf.Min(Mathf.Max(0, health + change), maxHealth);
         if (health <= 0)
         {
-            GameController.status = GameStatus.Lost;
+            MenuController.instance.GameLost();
         }
         if (change < 0)
         {
