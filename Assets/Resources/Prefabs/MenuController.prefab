@@ -52,4 +52,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 0}
-  canvas: {fileID: 0}
+  canvas:
+  - {fileID: 0}
+  - {fileID: 0}
+  WinImage: {fileID: 0}
+  LostImage: {fileID: 0}
+  text:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

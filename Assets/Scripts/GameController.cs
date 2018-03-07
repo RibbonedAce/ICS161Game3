@@ -8,9 +8,7 @@ public static class GameController {
     public static GameStatus status = GameStatus.Playing;   // Whether the player has won/lost
     public static Difficulty difficulty = Difficulty.Easy;  // The difficulty of the game
     public static float volume = 0.5f;
-    public static int KillCountEnemy1 = 0;
-    public static int KillCountEnemy2 = 0;
-    public static int KillCountEnemy3 = 0;
+    public static List<int> KillCountEnemy = new List<int>(3) { 0, 0, 0 };
 }
 
 public enum Difficulty

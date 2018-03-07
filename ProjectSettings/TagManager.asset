@@ -8,6 +8,8 @@ TagManager:
   - Spotlight
   - SmartEnemy
   - Wall
+  - Treasure
+  - AIEnemy
   layers:
   - Default
   - TransparentFX

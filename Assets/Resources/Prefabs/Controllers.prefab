@@ -52,7 +52,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 562194d8b08604298a5b299212a5d941, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 65f825c6311554b12b266082538c8683, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.1
   m_Pitch: 1
@@ -148,6 +148,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51e3744a998fe1f46bc3518a3e6d519c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SmartEnemy: {fileID: 1756710531198426, guid: 6c974e29292e3c947b093cc932d9819d, type: 2}
+  PatrolEnemy: {fileID: 1756710531198426, guid: f510e2bcef8705147826cf4b37c657d5,
+    type: 2}
 --- !u!114 &114950690976332298
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -159,4 +162,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7533ca1ed560d42a42a4e73a533231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 15
+  size: 10

@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour {
     public int maxHealth;               // The maximum health of the enemy
     public int health;                  // The health of the enemy
     public int damage;                  // The damage the enemy deals
+    public int indexName;
     //public int range;                   // The range to be randomly placed
     public GameObject afterEffect;      // The after-effect to use
     private Rigidbody2D _rigidbody2D;   // The Rigidbody component attached
@@ -84,14 +85,9 @@ public class Enemy : MonoBehaviour {
     // Called when the enemy dies
     public void Die ()
     {
+        GameController.KillCountEnemy[indexName]++;
         Instantiate(afterEffect);
-        Destroy(gameObject);
-        if(gameObject.name == "Enemy1")
-            GameController.KillCountEnemy1++;
-        else if (gameObject.name == "Enemy2")
-            GameController.KillCountEnemy2++;
-        else if (gameObject.name == "Enemy3")
-            GameController.KillCountEnemy3++;
+        Destroy(gameObject);     
     }
 
 
