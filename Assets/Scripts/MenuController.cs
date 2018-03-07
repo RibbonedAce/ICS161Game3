@@ -5,26 +5,26 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class MenuController : MonoBehaviour {
     public GameObject slider;
-    public GameObject canvas;
+    public List<Canvas> canvas;
     public static bool isGamePaused;
-    public Image WinImage;
+    public GameObject WinImage;
     public List<Text> text;
     // Use this for initialization
     private void Awake()
-    {
+    {   
         slider.GetComponent<Slider>().value = GameController.volume;
         if(SceneManager.GetActiveScene().name != "MenuScene")
-            canvas.GetComponent<Canvas>().enabled = false;
+            canvas[0].GetComponent<Canvas>().enabled = false;
         isGamePaused = false;
     }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name != "MenuScene")
         {
-            if (canvas.GetComponent<Canvas>().enabled == false)
+            if (canvas[0].GetComponent<Canvas>().enabled == false)
             {
                 Time.timeScale = 0;
-                canvas.GetComponent<Canvas>().enabled = true;
+                canvas[0].GetComponent<Canvas>().enabled = true;
                 isGamePaused = true;
             }
             else Resume();
@@ -34,7 +34,9 @@ public class MenuController : MonoBehaviour {
             text[0].text = "X " + GameController.KillCountEnemy1.ToString();
             text[1].text = "X " + GameController.KillCountEnemy2.ToString();
             text[2].text = "X " + GameController.KillCountEnemy3.ToString();
-            WinImage.enabled = true;
+            WinImage.SetActive(true);
+            if(SceneManager.GetActiveScene().buildIndex < 3)
+                Invoke("ChangeScene",2.0f);
         }
     }
     public void ExitGame()
@@ -61,8 +63,12 @@ public class MenuController : MonoBehaviour {
     }
     public void Resume()
     {
-        canvas.GetComponent<Canvas>().enabled = false;
+        canvas[0].GetComponent<Canvas>().enabled = false;
         isGamePaused = false;
         Time.timeScale = 1;
+    }
+    private void ChangeScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
