@@ -555,6 +555,18 @@ Prefab:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 65f825c6311554b12b266082538c8683, type: 3}
+    - target: {fileID: 114802699174937606, guid: b8724a22175053f42a78a79cf76454d9,
+        type: 2}
+      propertyPath: SmartEnemy
+      value: 
+      objectReference: {fileID: 1756710531198426, guid: 6c974e29292e3c947b093cc932d9819d,
+        type: 2}
+    - target: {fileID: 114802699174937606, guid: b8724a22175053f42a78a79cf76454d9,
+        type: 2}
+      propertyPath: PatrolEnemy
+      value: 
+      objectReference: {fileID: 1756710531198426, guid: f510e2bcef8705147826cf4b37c657d5,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b8724a22175053f42a78a79cf76454d9, type: 2}
   m_IsPrefabParent: 0

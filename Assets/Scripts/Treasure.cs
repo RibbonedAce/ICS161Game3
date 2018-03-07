@@ -42,7 +42,7 @@ public class Treasure : MonoBehaviour {
         if(collision.collider.CompareTag("AIEnemy"))
         {
             AudioSource a = Instantiate(afterEffect).GetComponent<AudioSource>();
-            a.pitch = 1.5f;
+            a.pitch = 0.5f;
             MenuController.instance.GameLost();
             Destroy(gameObject);
         }

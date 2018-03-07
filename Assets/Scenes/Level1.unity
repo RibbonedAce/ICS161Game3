@@ -372,7 +372,7 @@ Prefab:
     - target: {fileID: 224927146338381706, guid: b76eb38aeb940a6408c839bdfb158fb1,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 274.8
+      value: 141.3
       objectReference: {fileID: 0}
     - target: {fileID: 224927146338381706, guid: b76eb38aeb940a6408c839bdfb158fb1,
         type: 2}
@@ -392,7 +392,7 @@ Prefab:
     - target: {fileID: 224802116336657330, guid: b76eb38aeb940a6408c839bdfb158fb1,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 274.8
+      value: 141.3
       objectReference: {fileID: 0}
     - target: {fileID: 224802116336657330, guid: b76eb38aeb940a6408c839bdfb158fb1,
         type: 2}
@@ -412,7 +412,7 @@ Prefab:
     - target: {fileID: 224061394672031900, guid: b76eb38aeb940a6408c839bdfb158fb1,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 274.8
+      value: 141.3
       objectReference: {fileID: 0}
     - target: {fileID: 224061394672031900, guid: b76eb38aeb940a6408c839bdfb158fb1,
         type: 2}
@@ -432,7 +432,7 @@ Prefab:
     - target: {fileID: 224056724433051200, guid: b76eb38aeb940a6408c839bdfb158fb1,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 274.8
+      value: 141.3
       objectReference: {fileID: 0}
     - target: {fileID: 224056724433051200, guid: b76eb38aeb940a6408c839bdfb158fb1,
         type: 2}
@@ -452,7 +452,7 @@ Prefab:
     - target: {fileID: 224868348507290336, guid: b76eb38aeb940a6408c839bdfb158fb1,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 274.8
+      value: 141.3
       objectReference: {fileID: 0}
     - target: {fileID: 224868348507290336, guid: b76eb38aeb940a6408c839bdfb158fb1,
         type: 2}
@@ -472,7 +472,7 @@ Prefab:
     - target: {fileID: 224754786897591466, guid: b76eb38aeb940a6408c839bdfb158fb1,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 274.8
+      value: 141.3
       objectReference: {fileID: 0}
     - target: {fileID: 224754786897591466, guid: b76eb38aeb940a6408c839bdfb158fb1,
         type: 2}
@@ -545,6 +545,18 @@ Prefab:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 1251830139}
+    - target: {fileID: 114802699174937606, guid: b8724a22175053f42a78a79cf76454d9,
+        type: 2}
+      propertyPath: SmartEnemy
+      value: 
+      objectReference: {fileID: 1756710531198426, guid: 6c974e29292e3c947b093cc932d9819d,
+        type: 2}
+    - target: {fileID: 114802699174937606, guid: b8724a22175053f42a78a79cf76454d9,
+        type: 2}
+      propertyPath: PatrolEnemy
+      value: 
+      objectReference: {fileID: 1756710531198426, guid: f510e2bcef8705147826cf4b37c657d5,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b8724a22175053f42a78a79cf76454d9, type: 2}
   m_IsPrefabParent: 0
