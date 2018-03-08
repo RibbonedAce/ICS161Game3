@@ -182,7 +182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   afterEffect: {fileID: 1709958390146852, guid: ede8714247eb0904ab68a393dacc823c,
     type: 2}
-  _speed: 12
+  _speed: 15
 --- !u!212 &212753113598857250
 SpriteRenderer:
   m_ObjectHideFlags: 1
