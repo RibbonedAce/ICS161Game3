@@ -148,6 +148,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51e3744a998fe1f46bc3518a3e6d519c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemies:
+  - {fileID: 1181620928858938, guid: 825e3d2dcb3a7ad41b0e2bfddfad5454, type: 2}
+  - {fileID: 1224145293119292, guid: 0b15053f176b1f34597dc6b92c78d912, type: 2}
+  taken: []
   SmartEnemy: {fileID: 1756710531198426, guid: 6c974e29292e3c947b093cc932d9819d, type: 2}
   PatrolEnemy: {fileID: 1756710531198426, guid: f510e2bcef8705147826cf4b37c657d5,
     type: 2}

@@ -24,7 +24,7 @@ public class Treasure : MonoBehaviour {
     {
         Vector2Int toGo = new Vector2Int(GameController.width / 2, GameController.height - 1);
         _rigidbody2D.MovePosition(toGo);
-        EnemyController.taken.Add(toGo);
+        EnemyController.instance.taken.Add(toGo);
         pos = toGo;
     }
 	

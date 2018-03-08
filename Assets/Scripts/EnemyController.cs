@@ -4,31 +4,20 @@ using System.IO;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour {
-    public static List<GameObject> enemies; // The enemy Game Object to spawn
-    public static List<Vector2Int> taken;   // The spots already taken
+    public static EnemyController instance;  // The instance to reference
+    public List<GameObject> enemies;        // The enemy Game Object to spawn
+    public List<Vector2Int> taken;          // The spots already taken
     public GameObject SmartEnemy;
     public GameObject PatrolEnemy;
     void Awake ()
     {
-        if (enemies == null)
+        instance = this;
+        taken = new List<Vector2Int> { Vector2Int.zero };
+        for (int i = 0; i < 3; i++)
         {
-            enemies = new List<GameObject>();
-            DirectoryInfo d = new DirectoryInfo("Assets/Resources/Prefabs");
-            FileInfo[] files = d.GetFiles("Enemy*.prefab");
-            foreach (FileInfo f in files)
+            for (int j = 0; j < 3; j++)
             {
-                enemies.Add(Resources.Load<GameObject>("Prefabs/" + f.Name.Substring(0, f.Name.Length - 7)));
-            }
-        }
-        if (taken == null)
-        {
-            taken = new List<Vector2Int> { Vector2Int.zero };
-            for (int i = 0; i < 3; i++)
-            {
-                for (int j = 0; j < 3; j++)
-                {
-                    taken.Add(new Vector2Int(i, j));
-                }
+                taken.Add(new Vector2Int(i, j));
             }
         }
     }

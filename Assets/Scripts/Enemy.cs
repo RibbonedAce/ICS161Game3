@@ -37,7 +37,7 @@ public class Enemy : MonoBehaviour {
         {
             index = 0;
             reverse = false;    
-            Taken = EnemyController.taken;
+            Taken = EnemyController.instance.taken;
             myNodes = Maze.nodes;
             notTaken = new List<int>();
             AddNotTakenNodes();
