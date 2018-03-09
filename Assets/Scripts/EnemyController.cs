@@ -4,7 +4,7 @@ using System.IO;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour {
-    public static EnemyController instance;  // The instance to reference
+    public static EnemyController instance; // The instance to reference
     public List<GameObject> enemies;        // The enemy Game Object to spawn
     public List<Vector2Int> taken;          // The spots already taken
     public GameObject SmartEnemy;

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Maze {
-    public static Maze instance;
+    public static Maze instance;        // The instance to reference
     private int height;                 // The height of the map
     private int width;                  // The width of the map
     public static int _width;
     public static int _height;
     private float chance;           // The amount of walls to spawn
-    public static List<MapNode> nodes;  // The mapnodes that make up the map
+    public List<MapNode> nodes;     // The mapnodes that make up the map
     private static bool foundDest = false;
     // A constructor taking height and width
     public Maze (int nHeight, int nWidth)
@@ -27,10 +27,6 @@ public class Maze {
             nodes.Add(new MapNode());
         }
         RandomizeMap();
-    }
-    public static List<MapNode> getNodesList()
-    {
-        return new List<MapNode>(nodes); 
     }
     // Return the maze nodes
     public List<MapNode> GetNodes ()
@@ -295,10 +291,21 @@ public class Maze {
     }
 
     // Find a path between two nodes, returning the closest one if possible
-    private List<int> FindPathFast (int start, int end)
+    public List<int> FindPathFast (int start, int end)
     {
+        if (start == end)
+        {
+            return new List<int> { start };
+        }
+        foreach (MapNode mn in GetSortedKeys(start, end))
+        {
+            if (mn != null && nodes.IndexOf(mn) == end)
+            {
+                return new List<int> { start, end };
+            }
+        }
         List<List<int>> searches = new List<List<int>>();
-        foreach (MapNode mn in nodes[start].adjacents.Values)
+        foreach (MapNode mn in GetSortedKeys(start, end))
         {
             if (mn != null)
             {
@@ -329,10 +336,21 @@ public class Maze {
     // Find a path between two nodes, returning the closest one if possible
     private List<int> FindPathFast(int start, int end, List<int> searched)
     {
+        if (start == end)
+        {
+            return new List<int> { start };
+        }
+        foreach (MapNode mn in GetSortedKeys(start, end))
+        {
+            if (mn != null && nodes.IndexOf(mn) == end)
+            {
+                return new List<int> { start, end };
+            }
+        }
         List<int> newSearched = new List<int>(searched);
         newSearched.Add(start);
         List<List<int>> searches = new List<List<int>>();
-        foreach (MapNode mn in nodes[start].adjacents.Values)
+        foreach (MapNode mn in GetSortedKeys(start, end))
         {
             if (mn != null && !searched.Contains(nodes.IndexOf(mn)))
             {
@@ -358,6 +376,35 @@ public class Maze {
         }
         bestSearch.Insert(0, start);
         return bestSearch;
+    }
+
+    // Return a list of adjacent nodes organized by distance
+    public List<MapNode> GetSortedKeys(int start, int end)
+    {
+        List<MapNode> result = new List<MapNode>();
+        Dictionary<MapNode, float> keyDistances = new Dictionary<MapNode, float>();
+        foreach (MapNode mn in nodes[start].adjacents.Values)
+        {
+            if (mn != null)
+            {
+                keyDistances.Add(mn, GetDistance(start, end));
+            }
+        }
+        for (int i = 0; i < keyDistances.Keys.Count; ++i)
+        {
+            MapNode toAdd = new MapNode();
+            float min = Mathf.Infinity;
+            foreach (MapNode mn in keyDistances.Keys)
+            {
+                if (!result.Contains(mn) && keyDistances[mn] < min)
+                {
+                    toAdd = mn;
+                    min = keyDistances[mn];
+                }
+            }
+            result.Add(toAdd);
+        }
+        return result;
     }
 
     // Find all connected nodes to the current one
@@ -389,8 +436,8 @@ public class Maze {
         return Mathf.Sqrt(Mathf.Pow(xys.x - xye.x, 2) + Mathf.Pow(xys.y - xye.y, 2));
     }
 
-    // Find a path between two nodes, returning the closest one if possible
-    public static List<int> FindPathOld (int start, int end)
+    /*// Find a path between two nodes, returning the closest one if possible
+    public List<int> FindPathOld (int start, int end)
     {
         List<int> result = new List<int>();
         List<int> visitedNodes = new List<int>();
@@ -445,7 +492,7 @@ public class Maze {
             }
         }
         else foundDest = true;
-    }
+    }*/
 
     // Make a random map
     private void RandomizeMap ()

@@ -16,19 +16,20 @@ public class Enemy : MonoBehaviour {
     private AudioSource _audioSource;  // The Audio Source component attached
 
     //Added vars for Smart Enemy------------
-    [Range(0,1)]
+    [Range(0.1f,5)]
     public float _speed;
+    private bool moving;
     private List<int> myPath;
     private List<int> notTaken;
     private List<MapNode> myNodes;
     private List<Vector2Int> Taken;
     private int index;
-    private int random;
     private bool reverse;
     //--------------------------------------
 
     void Awake ()
-    {      
+    {
+        moving = false;
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _audioSource = GetComponent<AudioSource>();
         GetComponent<AudioSource>().volume = GameController.volume;
@@ -38,10 +39,10 @@ public class Enemy : MonoBehaviour {
             index = 0;
             reverse = false;    
             Taken = EnemyController.instance.taken;
-            myNodes = Maze.nodes;
+            myNodes = Maze.instance.nodes;
             notTaken = new List<int>();
             AddNotTakenNodes();
-            myPath = Maze.FindPathOld(notTaken[Random.Range(1, notTaken.Count - 1)],notTaken[Random.Range(1, notTaken.Count - 1)]);
+            myPath = Maze.instance.FindPathFast(notTaken[Random.Range(1, notTaken.Count - 1)],notTaken[Random.Range(1, notTaken.Count - 1)]);
             Vector3 temp = GetNodePosition(myPath[0]);
             transform.position = new Vector3(temp.x,temp.y,0);
         }
@@ -58,10 +59,20 @@ public class Enemy : MonoBehaviour {
     {
         if (this.gameObject.tag == "SmartEnemy" && !MenuController.isGamePaused)
         {
-            if (!reverse)
+            if (index >= myPath.Count)
+            {
+                SwitchDirections();
+            }
+            /*if (!reverse)
                 moveForward();
             else
                 moveBackward();
+                */
+            if (!moving)
+            {
+                StartCoroutine(MoveTo(GetNodePosition(myPath[index]), 1 / _speed));
+            }
+            Debug.Log(moving);
         }
         GetComponent<AudioSource>().volume = GameController.volume;
     }
@@ -91,7 +102,7 @@ public class Enemy : MonoBehaviour {
 
 
     //=================================== Smart Enemy Functions Below ============================================================
-    private void moveForward()
+    /*private void moveForward()
     {
         if (index < myPath.Count)
         {
@@ -112,7 +123,28 @@ public class Enemy : MonoBehaviour {
                 --index;
         }
         else reverse = false;
+    }*/
+
+    private void SwitchDirections()
+    {
+        index = 0;
+        myPath.Reverse();
     }
+
+    private IEnumerator MoveTo (Vector2 destination, float time)
+    {
+        moving = true;
+        Vector2 start = _rigidbody2D.position;
+        for (float i = 0; i < time; i += Time.deltaTime)
+        {
+            _rigidbody2D.MovePosition(Vector2.Lerp(start, destination, i / time));
+            yield return null;
+        }
+        _rigidbody2D.MovePosition(destination);
+        ++index;
+        moving = false;
+    }
+
     private Vector3 GetNodePosition(int index)
     {
         Vector3 result = new Vector3(index % Maze._width, index / Maze._width,0);

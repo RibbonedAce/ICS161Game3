@@ -15,6 +15,7 @@ public class AIEnemy : MonoBehaviour {
 
     private int start;
     private int destination;
+    private List<int> visited;          // Tracks visited nodes
     private List<int> myPath;
     private int index;
     
@@ -23,20 +24,29 @@ public class AIEnemy : MonoBehaviour {
         _audioSource = GetComponent<AudioSource>();
         GetComponent<AudioSource>().volume = GameController.volume;
 
+        visited = new List<int>();
         getLocations();
-        myPath = Maze.FindPathOld(start, destination);
+        myPath = Maze.instance.FindPathFast(start, destination);
         index = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        Move();
+        if (index >= myPath.Count)
+        {
+            getLocations();
+            myPath = Maze.instance.FindPathFast(start, destination);
+        }
+        else
+        {
+            Move();
+        }
         //if (index == myPath.Count)
         //    MenuController.instance.GameLost();
 	}
     void getLocations()
     {
-        foreach (MapNode mn in Maze.nodes)
+        /*foreach (MapNode mn in Maze.nodes)
         {
             Vector2Int temp = PositionAt(mn);
             if(temp.x == (int)transform.position.x && temp.y == (int)transform.position.y)
@@ -47,12 +57,17 @@ public class AIEnemy : MonoBehaviour {
             {
                 destination = Maze.nodes.IndexOf(mn);
             }
+        }*/
+
+        foreach (MapNode mn in Maze.instance.nodes)
+        {
+
         }
     }
-    private Vector2Int PositionAt(MapNode mn)
+    /*private Vector2Int PositionAt(MapNode mn)
     {
-        return new Vector2Int(Maze.nodes.IndexOf(mn) % Maze._width, Maze.nodes.IndexOf(mn) / Maze._width);
-    }
+        return new Vector2Int(Maze.instance.nodes.IndexOf(mn) % Maze._width, Maze.instance.nodes.IndexOf(mn) / Maze._width);
+    }*/
 
     private Vector2Int PositionAtIndex(int index)
     {
