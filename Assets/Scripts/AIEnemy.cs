@@ -10,9 +10,10 @@ public class AIEnemy : MonoBehaviour {
     private Rigidbody2D _rigidbody2D;   // The Rigidbody component attached
     private AudioSource _audioSource;  // The Audio Source component attached
 
-    [Range(0, 50)]
+    [Range(0, 5)]
     public float _speed;
 
+    private bool moving;
     private int start;
     private int destination;
     private List<int> visited;          // Tracks visited nodes
@@ -23,66 +24,53 @@ public class AIEnemy : MonoBehaviour {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _audioSource = GetComponent<AudioSource>();
         GetComponent<AudioSource>().volume = GameController.volume;
-
         visited = new List<int>();
         getLocations();
-        myPath = Maze.instance.FindPathFast(start, destination);
+        //myPath = Maze.instance.FindPathOld(start, destination);
         index = 0;
+        moving = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+       /* GetComponent<AudioSource>().volume = GameController.volume;
         if (index >= myPath.Count)
         {
+            index = 0;
+            myPath.Clear();
             getLocations();
             myPath = Maze.instance.FindPathFast(start, destination);
         }
         else
         {
             Move();
-        }
+        }*/
         //if (index == myPath.Count)
         //    MenuController.instance.GameLost();
 	}
     void getLocations()
     {
-        /*foreach (MapNode mn in Maze.nodes)
-        {
-            Vector2Int temp = PositionAt(mn);
-            if(temp.x == (int)transform.position.x && temp.y == (int)transform.position.y)
-            {
-                start = Maze.nodes.IndexOf(mn);
-            }
-            if (temp.x == Treasure.instance.pos.x && temp.y == Treasure.instance.pos.y)
-            {
-                destination = Maze.nodes.IndexOf(mn);
-            }
-        }*/
-
-        foreach (MapNode mn in Maze.instance.nodes)
-        {
-
-        }
     }
-    /*private Vector2Int PositionAt(MapNode mn)
-    {
-        return new Vector2Int(Maze.instance.nodes.IndexOf(mn) % Maze._width, Maze.instance.nodes.IndexOf(mn) / Maze._width);
-    }*/
 
-    private Vector2Int PositionAtIndex(int index)
-    {
-        return new Vector2Int(index % Maze._width, index / Maze._width);
-    }
     private void Move()
     {
-        if(index < myPath.Count)
+        if (!moving)
         {
-            Vector3 res = new Vector3(PositionAtIndex(myPath[index]).x, PositionAtIndex(myPath[index]).y, 0);
-            Vector3 offset = res - transform.position;
-            _rigidbody2D.MovePosition(transform.position + offset * _speed * Time.deltaTime);
-            if (transform.position == res)
-                 ++index;
+            StartCoroutine(MoveTo(Maze.instance.PositionAt(myPath[index]), 1 / _speed));
         }
+    }
+    private IEnumerator MoveTo(Vector2 destination, float time)
+    {
+        moving = true;
+        Vector2 start = _rigidbody2D.position;
+        for (float i = 0; i < time; i += Time.deltaTime)
+        {
+            _rigidbody2D.MovePosition(Vector2.Lerp(start, destination, i / time));
+            yield return null;
+        }
+        _rigidbody2D.MovePosition(destination);
+        ++index;
+        moving = false;
     }
     void OnCollisionEnter2D(Collision2D collision)
     {

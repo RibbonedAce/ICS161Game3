@@ -436,7 +436,7 @@ public class Maze {
         return Mathf.Sqrt(Mathf.Pow(xys.x - xye.x, 2) + Mathf.Pow(xys.y - xye.y, 2));
     }
 
-    /*// Find a path between two nodes, returning the closest one if possible
+    // Find a path between two nodes, returning the closest one if possible
     public List<int> FindPathOld (int start, int end)
     {
         List<int> result = new List<int>();
@@ -454,7 +454,7 @@ public class Maze {
         return result;
     }
 
-    public static void CountNodesInTree(int start, int end, List<int> c)
+    public void CountNodesInTree(int start, int end, List<int> c)
     {
         foreach(MapNode mn in nodes[start].adjacents.Values)
         {
@@ -466,7 +466,7 @@ public class Maze {
         }
     }
 
-    public static void FindPathOverride(int start, int end, List<int> o, List<int> visited,int max)
+    public void FindPathOverride(int start, int end, List<int> o, List<int> visited,int max)
     {
         if (start != end)
         {
@@ -492,7 +492,7 @@ public class Maze {
             }
         }
         else foundDest = true;
-    }*/
+    }
 
     // Make a random map
     private void RandomizeMap ()

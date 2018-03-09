@@ -7,7 +7,7 @@ public class MenuController : MonoBehaviour {
     public static MenuController instance;
     public GameObject slider;
     public List<Canvas> canvas;
-    public static bool isGamePaused;
+    public bool isGamePaused;
     public GameObject WinImage;
     public GameObject LostImage;
     public List<Text> text;
@@ -37,12 +37,6 @@ public class MenuController : MonoBehaviour {
     {
         Application.Quit();
     }
-    public void StartGame()
-    {
-        SceneManager.LoadScene("Level1");
-        Time.timeScale = 1;
-        isGamePaused = false;
-    }
     public void ChangeDifficulty(int d)
     {
         GameController.difficulty = (Difficulty)d;
@@ -64,6 +58,7 @@ public class MenuController : MonoBehaviour {
     private void ChangeScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        GameController.status = GameStatus.Playing;
     }
     public void GameWon()
     {

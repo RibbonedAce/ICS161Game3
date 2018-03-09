@@ -12,6 +12,7 @@ public class EnemyController : MonoBehaviour {
     void Awake ()
     {
         instance = this;
+        ResetGameState();
         taken = new List<Vector2Int> { Vector2Int.zero };
         for (int i = 0; i < 3; i++)
         {
@@ -20,12 +21,12 @@ public class EnemyController : MonoBehaviour {
                 taken.Add(new Vector2Int(i, j));
             }
         }
+        Invoke("SpawnEnemy", 0.5f);
     }
 
     // Use this for initialization
     void Start ()
     {
-        Invoke("SpawnEnemy", 0.5f);
 	}
 	// Update is called once per frame
 	void Update ()
@@ -66,5 +67,12 @@ public class EnemyController : MonoBehaviour {
     private void SpawnAIEnemy()
     {
         Instantiate(SmartEnemy, new Vector3(GameController.width-1,0, 0), Quaternion.identity);
+    }
+
+    private void ResetGameState()
+    {
+        Time.timeScale = 1;
+        GameController.status = GameStatus.Playing;
+        GameController.KillCountEnemy = new List<int>() { 0, 0, 0 };
     }
 }

@@ -57,7 +57,7 @@ public class Enemy : MonoBehaviour {
 	// Update is called for smart enemy only
 	void Update()
     {
-        if (this.gameObject.tag == "SmartEnemy" && !MenuController.isGamePaused)
+        if (this.gameObject.tag == "SmartEnemy")
         {
             if (index >= myPath.Count)
             {
@@ -72,7 +72,6 @@ public class Enemy : MonoBehaviour {
             {
                 StartCoroutine(MoveTo(GetNodePosition(myPath[index]), 1 / _speed));
             }
-            Debug.Log(moving);
         }
         GetComponent<AudioSource>().volume = GameController.volume;
     }
@@ -102,29 +101,7 @@ public class Enemy : MonoBehaviour {
 
 
     //=================================== Smart Enemy Functions Below ============================================================
-    /*private void moveForward()
-    {
-        if (index < myPath.Count)
-        {
-            Vector3 result = GetNodePosition(myPath[index]);
-            transform.position = Vector3.Lerp(transform.position, result,_speed);
-            if(transform.position == result)
-                ++index;
-        }
-        else reverse = true;
-    }
-    private void moveBackward()
-    {
-        if (index > 0)
-        {
-            Vector3 result = GetNodePosition(myPath[index - 1]);
-            transform.position = Vector3.Lerp(transform.position, result,_speed);
-            if (transform.position == result)
-                --index;
-        }
-        else reverse = false;
-    }*/
-
+ 
     private void SwitchDirections()
     {
         index = 0;
@@ -160,9 +137,30 @@ public class Enemy : MonoBehaviour {
         {
             Vector2Int temp = PositionAt(mn);
             if(!Taken.Contains(temp))
-            {
                 notTaken.Add(myNodes.IndexOf(mn));
-            }
         }
     }
+
+    /*private void moveForward()
+  {
+      if (index < myPath.Count)
+      {
+          Vector3 result = GetNodePosition(myPath[index]);
+          transform.position = Vector3.Lerp(transform.position, result,_speed);
+          if(transform.position == result)
+              ++index;
+      }
+      else reverse = true;
+  }
+  private void moveBackward()
+  {
+      if (index > 0)
+      {
+          Vector3 result = GetNodePosition(myPath[index - 1]);
+          transform.position = Vector3.Lerp(transform.position, result,_speed);
+          if (transform.position == result)
+              --index;
+      }
+      else reverse = false;
+  }*/
 }
