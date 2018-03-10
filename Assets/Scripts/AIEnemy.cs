@@ -10,7 +10,7 @@ public class AIEnemy : MonoBehaviour {
     private Rigidbody2D _rigidbody2D;   // The Rigidbody component attached
     private AudioSource _audioSource;  // The Audio Source component attached
 
-    [Range(0, 5)]
+    [Range(0.5f, 5)]
     public float _speed;
 
     private bool moving;
@@ -21,18 +21,32 @@ public class AIEnemy : MonoBehaviour {
     private int index;
     
 	void Awake() {
+        start = (int)transform.position.x;
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _audioSource = GetComponent<AudioSource>();
         GetComponent<AudioSource>().volume = GameController.volume;
         visited = new List<int>();
         getLocations();
-        //myPath = Maze.instance.FindPathOld(start, destination);
+        myPath = Maze.instance.FindPathFast(start, destination);
         index = 0;
         moving = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        if (index >= myPath.Count)
+        {
+            start = myPath[myPath.Count - 1];
+            index = 0;
+            myPath.Clear();
+            getLocations();
+            myPath = Maze.instance.FindPathFast(start, destination);
+        }
+        else if (!moving)
+        {
+            StartCoroutine(MoveTo(Maze.instance.PositionAt(myPath[index]), 1f / _speed));
+        }
+
        /* GetComponent<AudioSource>().volume = GameController.volume;
         if (index >= myPath.Count)
         {
@@ -50,13 +64,21 @@ public class AIEnemy : MonoBehaviour {
 	}
     void getLocations()
     {
+        for (int i = Maze.instance.nodes.Count - 1; i >= 0; --i)
+        {
+            if (!visited.Contains(i))
+            {
+                destination = i;
+                return;
+            }
+        }
     }
 
     private void Move()
     {
         if (!moving)
         {
-            StartCoroutine(MoveTo(Maze.instance.PositionAt(myPath[index]), 1 / _speed));
+            StartCoroutine(MoveTo(Maze.instance.PositionAt(myPath[index]), 1f / _speed));
         }
     }
     private IEnumerator MoveTo(Vector2 destination, float time)
@@ -70,6 +92,7 @@ public class AIEnemy : MonoBehaviour {
         }
         _rigidbody2D.MovePosition(destination);
         ++index;
+        visited.Add((int)destination.y * Maze._width + (int)destination.x);
         moving = false;
     }
     void OnCollisionEnter2D(Collision2D collision)

@@ -70,7 +70,7 @@ public class Enemy : MonoBehaviour {
                 */
             if (!moving)
             {
-                StartCoroutine(MoveTo(GetNodePosition(myPath[index]), 1 / _speed));
+                StartCoroutine(MoveTo(GetNodePosition(myPath[index]), 1f / _speed));
             }
         }
         GetComponent<AudioSource>().volume = GameController.volume;

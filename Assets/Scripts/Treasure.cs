@@ -11,10 +11,6 @@ public class Treasure : MonoBehaviour {
     public Vector2Int pos;
     void Awake ()
     {
-        for(int i = 0; i < GameController.KillCountEnemy.Count; i++)
-        {
-            GameController.KillCountEnemy[i] = 0;
-        }
         instance = this;
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
@@ -22,10 +18,7 @@ public class Treasure : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        Vector2Int toGo = new Vector2Int(GameController.width / 2, GameController.height - 1);
-        _rigidbody2D.MovePosition(toGo);
-        EnemyController.instance.taken.Add(toGo);
-        pos = toGo;
+
     }
 	
 	// Update is called once per frame

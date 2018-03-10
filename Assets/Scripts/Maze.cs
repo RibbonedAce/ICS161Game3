@@ -387,7 +387,7 @@ public class Maze {
         {
             if (mn != null)
             {
-                keyDistances.Add(mn, GetDistance(start, end));
+                keyDistances.Add(mn, GetDistance(nodes.IndexOf(mn), end));
             }
         }
         for (int i = 0; i < keyDistances.Keys.Count; ++i)
@@ -433,7 +433,7 @@ public class Maze {
     {
         Vector2Int xys = PositionAt(start);
         Vector2Int xye = PositionAt(end);
-        return Mathf.Sqrt(Mathf.Pow(xys.x - xye.x, 2) + Mathf.Pow(xys.y - xye.y, 2));
+        return Mathf.Sqrt((xys.x - xye.x) * (xys.x - xye.x) + (xys.y - xye.y) * (xys.y - xye.y));
     }
 
     // Find a path between two nodes, returning the closest one if possible
