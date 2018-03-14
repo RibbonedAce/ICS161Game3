@@ -8,15 +8,14 @@ public class MazeObject : MonoBehaviour {
     public GameObject wall; // The wall prefab
     private Maze maze;      // The maze that the object uses
 
-    // Use this for initialization
     void Start ()
     {
         maze = new Maze(GameController.height, GameController.width);
         SpawnWalls();
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update ()
     {
 		
 	}

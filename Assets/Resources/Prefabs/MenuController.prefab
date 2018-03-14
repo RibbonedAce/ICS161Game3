@@ -55,6 +55,7 @@ MonoBehaviour:
   canvas:
   - {fileID: 0}
   - {fileID: 0}
+  isGamePaused: 0
   WinImage: {fileID: 0}
   LostImage: {fileID: 0}
   text:

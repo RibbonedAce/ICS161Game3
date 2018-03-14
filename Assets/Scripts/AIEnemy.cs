@@ -26,14 +26,19 @@ public class AIEnemy : MonoBehaviour {
         _audioSource = GetComponent<AudioSource>();
         GetComponent<AudioSource>().volume = GameController.volume;
         visited = new List<int>();
-        getLocations();
-        myPath = Maze.instance.FindPathFast(start, destination);
         index = 0;
         moving = false;
+        _speed = ((float)GameController.difficulty + 2) / 2;
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    void Start ()
+    {
+        getLocations();
+        myPath = Maze.instance.FindPathFast(start, destination);
+    }
+
+    // Update is called once per frame
+    void Update () {
         if (index >= myPath.Count)
         {
             start = myPath[myPath.Count - 1];
@@ -64,12 +69,14 @@ public class AIEnemy : MonoBehaviour {
 	}
     void getLocations()
     {
-        for (int i = Maze.instance.nodes.Count - 1; i >= 0; --i)
+        float minDistance = Mathf.Infinity;
+        for (int i = EnemyController.instance.taken.Count - 1; i >= 1; --i)
         {
-            if (!visited.Contains(i))
+            int loc = EnemyController.instance.taken[i].y * GameController.width + EnemyController.instance.taken[i].x;
+            if (!visited.Contains(loc) && Maze.instance.GetDistance(start, loc) < minDistance)
             {
-                destination = i;
-                return;
+                destination = loc;
+                minDistance = Maze.instance.GetDistance(start, loc);
             }
         }
     }

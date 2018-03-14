@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour {
     private List<MapNode> myNodes;
     private List<Vector2Int> Taken;
     private int index;
-    private bool reverse;
+    //private bool reverse;
     //--------------------------------------
 
     void Awake ()
@@ -34,24 +34,23 @@ public class Enemy : MonoBehaviour {
         _audioSource = GetComponent<AudioSource>();
         GetComponent<AudioSource>().volume = GameController.volume;
         health = maxHealth;
-        if(this.gameObject.tag == "SmartEnemy")
-        {
-            index = 0;
-            reverse = false;    
-            Taken = EnemyController.instance.taken;
-            myNodes = Maze.instance.nodes;
-            notTaken = new List<int>();
-            AddNotTakenNodes();
-            myPath = Maze.instance.FindPathFast(notTaken[Random.Range(1, notTaken.Count - 1)],notTaken[Random.Range(1, notTaken.Count - 1)]);
-            Vector3 temp = GetNodePosition(myPath[0]);
-            transform.position = new Vector3(temp.x,temp.y,0);
-        }
     }
 
     // Use this for initialization
     void Start ()
     {
-
+        if (this.gameObject.tag == "SmartEnemy")
+        {
+            index = 0;
+            //reverse = false;
+            Taken = EnemyController.instance.taken;
+            myNodes = Maze.instance.nodes;
+            Vector2Int start = EnemyController.instance.GetNewVector(false);
+            Vector2Int end = EnemyController.instance.GetNewVector(false);
+            myPath = Maze.instance.FindPathFast(start.y * GameController.width + start.x, end.y * GameController.width + end.x);
+            Vector3 temp = GetNodePosition(myPath[0]);
+            transform.position = new Vector3(temp.x, temp.y, 0);
+        }
     }
 	
 	// Update is called for smart enemy only

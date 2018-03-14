@@ -9,6 +9,13 @@ public static class GameController {
     public static Difficulty difficulty = Difficulty.Easy;  // The difficulty of the game
     public static float volume = 0.5f;
     public static List<int> KillCountEnemy = new List<int>(3) { 0, 0, 0 };
+
+    public static void ResetGameState ()
+    {
+        Time.timeScale = 1;
+        status = GameStatus.Playing;
+        KillCountEnemy = new List<int>() { 0, 0, 0 };
+    }
 }
 
 public enum Difficulty

@@ -155,6 +155,7 @@ MonoBehaviour:
   SmartEnemy: {fileID: 1756710531198426, guid: 6c974e29292e3c947b093cc932d9819d, type: 2}
   PatrolEnemy: {fileID: 1756710531198426, guid: f510e2bcef8705147826cf4b37c657d5,
     type: 2}
+  treasure: {fileID: 1278386741807422, guid: d37a47aec942af94c947f95ccd45ae72, type: 2}
 --- !u!114 &114950690976332298
 MonoBehaviour:
   m_ObjectHideFlags: 1

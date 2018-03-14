@@ -180,8 +180,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 368e4edab7f81364699342849dac9978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
-  health: 10
+  maxHealth: 5
+  health: 5
   damage: 0
   indexName: 0
   afterEffect: {fileID: 1709958390146852, guid: ede8714247eb0904ab68a393dacc823c,

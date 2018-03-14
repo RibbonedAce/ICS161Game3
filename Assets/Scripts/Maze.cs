@@ -429,7 +429,7 @@ public class Maze {
     }
 
     // Get the distance between two nodes
-    private float GetDistance (int start, int end)
+    public float GetDistance (int start, int end)
     {
         Vector2Int xys = PositionAt(start);
         Vector2Int xye = PositionAt(end);

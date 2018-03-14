@@ -57,8 +57,8 @@ public class MenuController : MonoBehaviour {
     }
     private void ChangeScene()
     {
+        GameController.ResetGameState();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        GameController.status = GameStatus.Playing;
     }
     public void GameWon()
     {

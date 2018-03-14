@@ -24,7 +24,6 @@ public class PlayerController : MonoBehaviour {
     void Awake ()
     {
         myPos = new Vector2Int((int)transform.position.x, (int)transform.position.y);
-        EnemyController.instance.taken.Add(myPos);
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _audioSource = GetComponent<AudioSource>();

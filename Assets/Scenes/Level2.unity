@@ -938,7 +938,7 @@ Prefab:
         type: 2}
       propertyPath: slider
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2091571781}
     - target: {fileID: 114257391789287960, guid: f4965e6dcfa807041a390a2664ce7a0d,
         type: 2}
       propertyPath: canvas
@@ -1216,5 +1216,10 @@ Prefab:
 --- !u!224 &2091571780 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224904097356606070, guid: b76eb38aeb940a6408c839bdfb158fb1,
+    type: 2}
+  m_PrefabInternal: {fileID: 2091571779}
+--- !u!1 &2091571781 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1991223525687096, guid: b76eb38aeb940a6408c839bdfb158fb1,
     type: 2}
   m_PrefabInternal: {fileID: 2091571779}

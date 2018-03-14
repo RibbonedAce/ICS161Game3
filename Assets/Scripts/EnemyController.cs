@@ -13,8 +13,7 @@ public class EnemyController : MonoBehaviour {
     void Awake ()
     {
         instance = this;
-        ResetGameState();
-        taken = new List<Vector2Int> { Vector2Int.zero };
+        taken = new List<Vector2Int> { Vector2Int.zero, new Vector2Int(GameController.width - 1, 0) };
         /*for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 3; j++)
@@ -22,12 +21,13 @@ public class EnemyController : MonoBehaviour {
                 taken.Add(new Vector2Int(i, j));
             }
         }*/
+        SpawnEnemy();
     }
 
     // Use this for initialization
     void Start ()
     {
-        SpawnEnemy();
+        
     }
 	// Update is called once per frame
 	void Update ()
@@ -58,19 +58,23 @@ public class EnemyController : MonoBehaviour {
         return result;
     }
 
-    // Get a random value taken in a range
+    // Get a random value taken not near the player or the AI
     public Vector2Int GetOldVector ()
     {
-        Vector2Int result = taken[Random.Range(0, taken.Count)];
-        Debug.Log(result);
-        //for (; result.x < GameController.width || result.y < GameController.height; result = taken[Random.Range(0, taken.Count)]) ;
-        return result;
+        foreach (Vector2Int v in taken)
+        {
+            if (v.y > GameController.height / 2)
+            {
+                return v;
+            }
+        }
+        return taken[taken.Count - 1];
     }
 
     private void SpawnPatrolEnemy()
     {
         List<Vector2Int> SpawnLocation = new List<Vector2Int>();
-        for (int i = 0; i < (int)(GameController.difficulty + 4); ++i)
+        for (int i = 0; i < 2 * ((int)GameController.difficulty - 1) + GameController.height / 5; ++i)
         {
             Vector2Int pos = GetNewVector(false);
             SpawnLocation.Add(pos);
@@ -82,18 +86,11 @@ public class EnemyController : MonoBehaviour {
     }
     private void SpawnAIEnemy()
     {
-        Instantiate(SmartEnemy, new Vector3(GameController.width - 1,0, 0), Quaternion.identity);
+        Instantiate(SmartEnemy, new Vector3(GameController.width - 1, 0, 0), Quaternion.identity);
     }
 
     private void SpawnTreasure ()
     {
         Instantiate(treasure, (Vector2)GetOldVector(), Quaternion.identity);
-    }
-
-    private void ResetGameState()
-    {
-        Time.timeScale = 1;
-        GameController.status = GameStatus.Playing;
-        GameController.KillCountEnemy = new List<int>() { 0, 0, 0 };
     }
 }

@@ -23,8 +23,8 @@ public class StartMenu : MonoBehaviour
     }
     public void StartGame()
     {
+        GameController.ResetGameState();
         SceneManager.LoadScene("Level1");
-        Time.timeScale = 1;
     }
     public void ChangeDifficulty(int d)
     {
