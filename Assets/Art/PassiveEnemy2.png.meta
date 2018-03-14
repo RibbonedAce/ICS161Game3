@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 78a4d0775b0bb8e4fa936fe43bd1adcf
-timeCreated: 1521012326
+guid: 7bb7ece2ff2ed1944aff14f99f805a95
+timeCreated: 1521015267
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -54,7 +54,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 1300
+  spritePixelsToUnits: 1600
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -89,10 +89,10 @@ TextureImporter:
       name: Wall_0
       rect:
         serializedVersion: 2
-        x: 50
+        x: 48
         y: 307
-        width: 153
-        height: 191
+        width: 157
+        height: 198
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -103,10 +103,10 @@ TextureImporter:
       name: Wall_1
       rect:
         serializedVersion: 2
-        x: 251
-        y: 302
-        width: 146
-        height: 175
+        x: 248
+        y: 300
+        width: 149
+        height: 177
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -117,10 +117,10 @@ TextureImporter:
       name: Wall_2
       rect:
         serializedVersion: 2
-        x: 449
+        x: 448
         y: 303
         width: 144
-        height: 151
+        height: 153
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,9 +132,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 651
-        y: 306
-        width: 144
-        height: 123
+        y: 305
+        width: 145
+        height: 125
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,10 +145,10 @@ TextureImporter:
       name: Wall_4
       rect:
         serializedVersion: 2
-        x: 53
-        y: 54
-        width: 149
-        height: 116
+        x: 52
+        y: 52
+        width: 152
+        height: 120
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,10 +159,10 @@ TextureImporter:
       name: Wall_5
       rect:
         serializedVersion: 2
-        x: 247
-        y: 57
-        width: 151
-        height: 225
+        x: 248
+        y: 56
+        width: 152
+        height: 228
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,10 +173,10 @@ TextureImporter:
       name: Wall_6
       rect:
         serializedVersion: 2
-        x: 454
+        x: 456
         y: 32
         width: 140
-        height: 251
+        height: 252
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -188,9 +188,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 647
-        y: 6
-        width: 143
-        height: 279
+        y: 4
+        width: 145
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
