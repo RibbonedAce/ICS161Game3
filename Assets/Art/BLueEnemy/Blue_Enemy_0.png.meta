@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 1edb67876a393d343b8525b7f5716cd3
-timeCreated: 1521011061
+guid: 357158bd8a6b2dc4a8c15f07c102eb61
+timeCreated: 1521053850
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: wall_0_0
-    21300002: wall_0_1
-    21300004: wall_0_2
-    21300006: wall_0_3
+    21300000: Blue_Enemy_0_0
+    21300002: Blue_Enemy_0_1
+    21300004: Blue_Enemy_0_2
+    21300006: Blue_Enemy_0_3
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -50,7 +50,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 4200
+  spritePixelsToUnits: 3300
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -82,7 +82,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wall_0_0
+      name: Blue_Enemy_0_0
       rect:
         serializedVersion: 2
         x: 0
@@ -96,41 +96,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: wall_0_1
+      name: Blue_Enemy_0_1
       rect:
         serializedVersion: 2
         x: 466
-        y: 542
-        width: 461
-        height: 459
+        y: 535
+        width: 469
+        height: 466
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: wall_0_2
+      name: Blue_Enemy_0_2
       rect:
         serializedVersion: 2
         x: 12
         y: 4
         width: 544
-        height: 538
+        height: 540
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: wall_0_3
+      name: Blue_Enemy_0_3
       rect:
         serializedVersion: 2
-        x: 695
-        y: 36
-        width: 515
-        height: 509
+        x: 671
+        y: 14
+        width: 565
+        height: 539
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

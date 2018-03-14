@@ -11,6 +11,7 @@ public class MenuController : MonoBehaviour {
     public GameObject WinImage;
     public GameObject LostImage;
     public List<Text> text;
+    public GameObject WinScreen;
     // Use this for initialization
     private void Awake()
     {
@@ -19,6 +20,8 @@ public class MenuController : MonoBehaviour {
         if(SceneManager.GetActiveScene().name != "MenuScene")
             canvas[0].GetComponent<Canvas>().enabled = false;
         isGamePaused = false;
+        if (WinScreen != null)
+            WinScreen.SetActive(false);
     }
     private void Update()
     {
