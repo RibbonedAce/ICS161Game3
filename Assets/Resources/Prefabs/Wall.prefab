@@ -21,7 +21,11 @@ GameObject:
   - component: {fileID: 4600459868886230}
   - component: {fileID: 212972536441485922}
   - component: {fileID: 68408632868645212}
+<<<<<<< HEAD
   - component: {fileID: 95878269323307466}
+=======
+  - component: {fileID: 95338602823284558}
+>>>>>>> 2b3b9ca50cc8108ac8825064184904a156c4a961
   m_Layer: 0
   m_Name: Wall
   m_TagString: Wall
@@ -57,9 +61,15 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
+<<<<<<< HEAD
   - {x: -0.5, y: 0}
   - {x: 0.5, y: 0}
 --- !u!95 &95878269323307466
+=======
+  - {x: -0.0625, y: 0}
+  - {x: 0.0625, y: 0}
+--- !u!95 &95338602823284558
+>>>>>>> 2b3b9ca50cc8108ac8825064184904a156c4a961
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -68,7 +78,11 @@ Animator:
   m_GameObject: {fileID: 1225221052747268}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
+<<<<<<< HEAD
   m_Controller: {fileID: 9100000, guid: 3c9ee38def206614b98b9bfe35635e05, type: 2}
+=======
+  m_Controller: {fileID: 0}
+>>>>>>> 2b3b9ca50cc8108ac8825064184904a156c4a961
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -110,12 +124,17 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
+<<<<<<< HEAD
   m_Sprite: {fileID: 21300000, guid: 1dbbd6ab04588ab41af885316c450535, type: 3}
   m_Color: {r: 0.5019608, g: 1, b: 0.5019608, a: 1}
+=======
+  m_Sprite: {fileID: 21300000, guid: ffbbf677caa71154490c25d0220b6f31, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+>>>>>>> 2b3b9ca50cc8108ac8825064184904a156c4a961
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.125, y: 0.125}
+  m_Size: {x: 0.120714284, y: 0.20642857}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
