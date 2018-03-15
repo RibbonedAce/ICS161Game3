@@ -43,7 +43,7 @@ public class HeartController : MonoBehaviour {
     // Delete a certain amount of herats
     public void DeleteHearts (int amount)
     {
-        for (int i = 0; i < amount; ++i)
+        for (int i = 0; i < amount && hearts.Count > 0; ++i)
         {
             Destroy(hearts[hearts.Count - 1]);
             hearts.RemoveAt(hearts.Count - 1);
