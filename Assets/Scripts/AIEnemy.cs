@@ -28,7 +28,7 @@ public class AIEnemy : MonoBehaviour {
         visited = new List<int>();
         index = 0;
         moving = false;
-        _speed = ((float)GameController.difficulty + 2) / 2;
+        _speed = ((float)GameController.difficulty + 2) / 4;
 	}
 
     void Start ()

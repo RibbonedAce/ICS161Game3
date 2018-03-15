@@ -275,6 +275,8 @@ MonoBehaviour:
   maxHealth: 5
   health: 5
   projectile: {fileID: 1661505971783394, guid: ae867d32adf015b4bb194b923d0581c4, type: 2}
+  fireClip: {fileID: 8300000, guid: efa73234a1015f0469965c5b6cab1636, type: 3}
+  hurtClip: {fileID: 8300000, guid: cc669f0cdb251a34fb2db794cb963880, type: 3}
   myPos: {x: 0, y: 0}
 --- !u!212 &212457076436632360
 SpriteRenderer:
