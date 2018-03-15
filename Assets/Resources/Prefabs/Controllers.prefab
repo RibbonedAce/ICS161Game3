@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 82921608187255324}
   - component: {fileID: 114950690976332298}
   - component: {fileID: 114404463732027074}
+  - component: {fileID: 114784798850620368}
   m_Layer: 0
   m_Name: Controllers
   m_TagString: Untagged
@@ -137,6 +138,18 @@ MonoBehaviour:
   player: {fileID: 114580232705436280, guid: a68e8268782aa7a4584d74ac73ca6f9a, type: 2}
   canvas: {fileID: 0}
   heart: {fileID: 1604329817596844, guid: bb462fcb9470061488efa23f6c781ad9, type: 2}
+--- !u!114 &114784798850620368
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1992480744855996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc8fc2ab31d2924587e7a91fef875d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  multiplier: 0.1
 --- !u!114 &114802699174937606
 MonoBehaviour:
   m_ObjectHideFlags: 1

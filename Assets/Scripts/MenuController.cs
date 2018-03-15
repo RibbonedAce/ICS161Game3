@@ -44,10 +44,6 @@ public class MenuController : MonoBehaviour {
     {
         GameController.difficulty = (Difficulty)d;
     }
-    public void ChangeVolume(float v)
-    {
-        GameController.volume = v;
-    }
     public void MainMenu()
     {
         SceneManager.LoadScene("MenuScene");
@@ -87,5 +83,14 @@ public class MenuController : MonoBehaviour {
     {
         Resume();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void ChangeAllVolume (float v)
+    {
+        GameController.volume = v;
+        foreach (VolumeControl vc in FindObjectsOfType<VolumeControl>())
+        {
+            vc.ChangeVolume();
+        }
     }
 }

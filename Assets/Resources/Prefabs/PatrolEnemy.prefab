@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114124119493778636}
   - component: {fileID: 82181280439210564}
   - component: {fileID: 95486369269108970}
+  - component: {fileID: 114376559587948028}
   m_Layer: 0
   m_Name: PatrolEnemy
   m_TagString: SmartEnemy
@@ -205,6 +206,18 @@ MonoBehaviour:
   afterEffect: {fileID: 1709958390146852, guid: ede8714247eb0904ab68a393dacc823c,
     type: 2}
   _speed: 2
+--- !u!114 &114376559587948028
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1756710531198426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc8fc2ab31d2924587e7a91fef875d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  multiplier: 1
 --- !u!212 &212753113598857250
 SpriteRenderer:
   m_ObjectHideFlags: 1

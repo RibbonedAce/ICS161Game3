@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 82181280439210564}
   - component: {fileID: 114690502870532506}
   - component: {fileID: 95749880795774224}
+  - component: {fileID: 114236948273887620}
   m_Layer: 0
   m_Name: AIEnemy
   m_TagString: AIEnemy
@@ -81,7 +82,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.100555554, y: 0.094444446}
+    oldSize: {x: 0.12066667, y: 0.11333334}
     newSize: {x: 0.2, y: 0.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -187,6 +188,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114236948273887620
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1756710531198426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc8fc2ab31d2924587e7a91fef875d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  multiplier: 1
 --- !u!114 &114690502870532506
 MonoBehaviour:
   m_ObjectHideFlags: 1

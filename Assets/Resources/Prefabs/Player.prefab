@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 114580232705436280}
   - component: {fileID: 82559032806749276}
   - component: {fileID: 95938154324509990}
+  - component: {fileID: 114773708875833368}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -296,6 +297,18 @@ MonoBehaviour:
   fireClip: {fileID: 8300000, guid: efa73234a1015f0469965c5b6cab1636, type: 3}
   hurtClip: {fileID: 8300000, guid: cc669f0cdb251a34fb2db794cb963880, type: 3}
   myPos: {x: 0, y: 0}
+--- !u!114 &114773708875833368
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1696866547040568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc8fc2ab31d2924587e7a91fef875d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  multiplier: 1
 --- !u!212 &212457076436632360
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -31,7 +31,7 @@ public class Treasure : MonoBehaviour {
     {
         if (!changing)
         {
-            ChangeColor();
+            StartCoroutine(ChangeColor());
         }
 	}
 
