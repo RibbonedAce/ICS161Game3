@@ -166,9 +166,7 @@ Prefab:
         type: 2}
       propertyPath: m_audioClip
       value: 
-
-      objectReference: {fileID: 8300000, guid: fad6df461acb5b5498609d6067e7471f, type: 3}
-
+      objectReference: {fileID: 8300000, guid: 5cd25cdb21d246548ac363cb94844b09, type: 3}
     - target: {fileID: 114950690976332298, guid: b8724a22175053f42a78a79cf76454d9,
         type: 2}
       propertyPath: size
