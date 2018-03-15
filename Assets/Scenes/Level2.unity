@@ -249,11 +249,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 388254301}
---- !u!1 &632673112 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1615379793242316, guid: b76eb38aeb940a6408c839bdfb158fb1,
-    type: 2}
-  m_PrefabInternal: {fileID: 2091571779}
 --- !u!114 &632673114 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114021421675230302, guid: b76eb38aeb940a6408c839bdfb158fb1,
@@ -1352,11 +1347,11 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 632673112}
+      objectReference: {fileID: 632673114}
     - target: {fileID: 114439586190014490, guid: b76eb38aeb940a6408c839bdfb158fb1,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: RestartLevel
       objectReference: {fileID: 0}
     - target: {fileID: 114040666860275308, guid: b76eb38aeb940a6408c839bdfb158fb1,
         type: 2}
@@ -1382,11 +1377,11 @@ Prefab:
         type: 2}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 632673114}
     - target: {fileID: 114526427873846360, guid: b76eb38aeb940a6408c839bdfb158fb1,
         type: 2}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ChangeVolume
+      value: ChangeAllVolume
       objectReference: {fileID: 0}
     - target: {fileID: 114021421675230302, guid: b76eb38aeb940a6408c839bdfb158fb1,
         type: 2}
