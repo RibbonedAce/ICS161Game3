@@ -175,7 +175,7 @@ Prefab:
     - target: {fileID: 82921608187255324, guid: b8724a22175053f42a78a79cf76454d9,
         type: 2}
       propertyPath: m_Pitch
-      value: 0.9
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 114784798850620368, guid: b8724a22175053f42a78a79cf76454d9,
         type: 2}
