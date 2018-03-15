@@ -18,7 +18,7 @@ public class MenuController : MonoBehaviour {
         instance = this;
         slider.GetComponent<Slider>().value = GameController.volume;
         if(SceneManager.GetActiveScene().name != "MenuScene")
-            canvas[0].GetComponent<Canvas>().enabled = false;
+            canvas[0].enabled = false;
         isGamePaused = false;
         if (WinScreen != null)
             WinScreen.SetActive(false);
@@ -27,10 +27,10 @@ public class MenuController : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name != "MenuScene")
         {
-            if (canvas[0].GetComponent<Canvas>().enabled == false)
+            if (canvas[0].enabled == false)
             {
                 Time.timeScale = 0;
-                canvas[0].GetComponent<Canvas>().enabled = true;
+                canvas[0].enabled = true;
                 isGamePaused = true;
             }
             else Resume(); 
@@ -54,7 +54,7 @@ public class MenuController : MonoBehaviour {
     }
     public void Resume()
     {
-        canvas[0].GetComponent<Canvas>().enabled = false;
+        canvas[0].enabled = false;
         isGamePaused = false;
         Time.timeScale = 1;
     }
