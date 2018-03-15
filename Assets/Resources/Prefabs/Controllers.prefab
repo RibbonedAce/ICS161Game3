@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a471aea38b51474b98c7b0b89064530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 114580232705436280, guid: a68e8268782aa7a4584d74ac73ca6f9a, type: 2}
   canvas: {fileID: 0}
   heart: {fileID: 1604329817596844, guid: bb462fcb9470061488efa23f6c781ad9, type: 2}
 --- !u!114 &114802699174937606

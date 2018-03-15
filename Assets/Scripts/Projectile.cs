@@ -45,6 +45,21 @@ public class Projectile : MonoBehaviour {
     public void SetDirection (Direction d)
     {
         direction = d;
+        switch (direction)
+        {
+            case Direction.Up:
+                transform.GetChild(0).Rotate(new Vector3(0, 0, 135));
+                break;
+            case Direction.Down:
+                transform.GetChild(0).Rotate(new Vector3(0, 0, 315));
+                break;
+            case Direction.Left:
+                transform.GetChild(0).Rotate(new Vector3(0, 0, 225));
+                break;
+            case Direction.Right:
+                transform.GetChild(0).Rotate(new Vector3(0, 0, 45));
+                break;
+        }
     }
 
     void OnCollisionEnter2D (Collision2D collision)
