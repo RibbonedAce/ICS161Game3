@@ -51,4 +51,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 907cfc6eb7dbc5744b56844781f54896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wall: {fileID: 1352196989268308, guid: 8511696085225124ab47fbc40d005e93, type: 2}
+  chance: 0.5
+  wall: {fileID: 1225221052747268, guid: 8511696085225124ab47fbc40d005e93, type: 2}

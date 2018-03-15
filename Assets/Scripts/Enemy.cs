@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour {
     public float _speed;
     private bool moving;
     private List<int> myPath;
-    //private List<int> notTaken;
+    private List<int> notTaken;
     private List<MapNode> myNodes;
     private List<Vector2Int> Taken;
     private int index;
@@ -130,7 +130,7 @@ public class Enemy : MonoBehaviour {
     {
         return new Vector2Int(myNodes.IndexOf(mn) % Maze._width, myNodes.IndexOf(mn) / Maze._width);
     }
-    /*public void AddNotTakenNodes()
+    public void AddNotTakenNodes()
     {
         foreach(MapNode mn in myNodes)
         {
@@ -138,7 +138,7 @@ public class Enemy : MonoBehaviour {
             if(!Taken.Contains(temp))
                 notTaken.Add(myNodes.IndexOf(mn));
         }
-    }*/
+    }
 
     /*private void moveForward()
   {
