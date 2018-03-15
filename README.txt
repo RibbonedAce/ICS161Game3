@@ -11,3 +11,4 @@ They should not feel confused when the level ends or when they lose.
 
 Other:
 We made most of our assets, but took a few from third party entities.
+There is a known issue with occasional crashing. We are not sure how to fix it since it seems inconsistent.

@@ -833,8 +833,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 164.52, y: -10.793999}
-  m_SizeDelta: {x: 109.68, y: 21.587997}
+  m_AnchoredPosition: {x: 95.399994, y: -6.2579994}
+  m_SizeDelta: {x: 63.599995, y: 12.515999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &158256589
 MonoBehaviour:
@@ -2115,8 +2115,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 164.52, y: -10.793999}
-  m_SizeDelta: {x: 109.68, y: 21.587997}
+  m_AnchoredPosition: {x: 95.399994, y: -6.2579994}
+  m_SizeDelta: {x: 63.599995, y: 12.515999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &337645099
 MonoBehaviour:
@@ -2666,8 +2666,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 274.2, y: -10.793999}
-  m_SizeDelta: {x: 109.68, y: 21.587997}
+  m_AnchoredPosition: {x: 158.99998, y: -6.2579994}
+  m_SizeDelta: {x: 63.599995, y: 12.515999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &444633491
 MonoBehaviour:
@@ -4161,8 +4161,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 54.84, y: -10.793999}
-  m_SizeDelta: {x: 109.68, y: 21.587997}
+  m_AnchoredPosition: {x: 31.799997, y: -6.2579994}
+  m_SizeDelta: {x: 63.599995, y: 12.515999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &793896849
 MonoBehaviour:
@@ -5493,8 +5493,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 274.2, y: -10.793999}
-  m_SizeDelta: {x: 109.68, y: 21.587997}
+  m_AnchoredPosition: {x: 158.99998, y: -6.2579994}
+  m_SizeDelta: {x: 63.599995, y: 12.515999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1195349062
 MonoBehaviour:
@@ -5627,8 +5627,8 @@ RectTransform:
   m_Father: {fileID: 796296651}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.425, y: 0.3}
-  m_AnchorMax: {x: 0.575, y: 0.55}
+  m_AnchorMin: {x: 0.85, y: 0.3}
+  m_AnchorMax: {x: 1, y: 0.55}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5654,7 +5654,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 002ed26bc252d15448a14a3ba9e8ed0f, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -6874,8 +6874,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 383.88, y: -10.793999}
-  m_SizeDelta: {x: 109.68, y: 21.587997}
+  m_AnchoredPosition: {x: 222.59999, y: -6.2579994}
+  m_SizeDelta: {x: 63.599995, y: 12.515999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1648099928
 MonoBehaviour:
@@ -7046,15 +7046,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'You are a pair of hackers getting into a government system. You must traverse
+  m_Text: "You are a pair of hackers getting into a government system. You must traverse
     a maze to find sensitive data. The government knows you are hacking them and are
-    trying to prevent the data from being lost while trying to trace you.
-
-
-
-
-
-    The cooperation of two people will be required to play this game.'
+    trying to hide the data while trying to trace you.\n\nNote: the data icon is tiny
+    and \nwell-hidden, so look carefully\n\nThe cooperation of two people will be
+    required to play this game."
 --- !u!222 &1674384465
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7432,10 +7428,12 @@ MonoBehaviour:
     The patrol enemy will travel around and trace you if you bump into it.
 
 
-    The trap will stay still, but will give a very powerful trace if you hit it.
+    The trap will stay still, but will give a very powerful trace if you hit it. The
+    data could be hidden under here.
 
 
-    The wall will block your path and be hard to destroy, but doesn''t trace.'
+    The wall will block your path and be hard to destroy, but doesn''t trace. The
+    data could be hidden under here.'
 --- !u!222 &1779860212
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7731,8 +7729,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 383.88, y: -10.793999}
-  m_SizeDelta: {x: 109.68, y: 21.587997}
+  m_AnchoredPosition: {x: 222.59999, y: -6.2579994}
+  m_SizeDelta: {x: 63.599995, y: 12.515999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1909464235
 MonoBehaviour:
@@ -8108,8 +8106,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 54.84, y: -10.793999}
-  m_SizeDelta: {x: 109.68, y: 21.587997}
+  m_AnchoredPosition: {x: 31.799997, y: -6.2579994}
+  m_SizeDelta: {x: 63.599995, y: 12.515999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2042023510
 MonoBehaviour:
