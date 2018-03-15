@@ -46,6 +46,7 @@ public class MenuController : MonoBehaviour {
     }
     public void MainMenu()
     {
+        GameController.ResetGameState();
         SceneManager.LoadScene("MenuScene");
     }
     public void Resume()
@@ -69,7 +70,7 @@ public class MenuController : MonoBehaviour {
         if (SceneManager.GetActiveScene().buildIndex < 3)
             Invoke("ChangeScene", 3.5f);
         else
-            Invoke("MainMenu", 3.5f);
+            Invoke("PlayerWinScreen", 3.0f);
     }
     public void GameLost()
     {
@@ -82,6 +83,7 @@ public class MenuController : MonoBehaviour {
     public void RestartLevel()
     {
         Resume();
+        GameController.ResetGameState();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -92,5 +94,12 @@ public class MenuController : MonoBehaviour {
         {
             vc.ChangeVolume();
         }
+    }
+    private void PlayerWinScreen()
+    {
+        WinImage.SetActive(false);
+        WinScreen.SetActive(true);
+        GameController.ResetGameState();
+        Invoke("MainMenu",3.0f);
     }
 }
