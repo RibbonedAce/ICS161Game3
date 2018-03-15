@@ -175,7 +175,7 @@ Prefab:
         type: 2}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 562194d8b08604298a5b299212a5d941, type: 3}
+      objectReference: {fileID: 8300000, guid: fad6df461acb5b5498609d6067e7471f, type: 3}
     - target: {fileID: 114802699174937606, guid: b8724a22175053f42a78a79cf76454d9,
         type: 2}
       propertyPath: SmartEnemy
@@ -191,6 +191,11 @@ Prefab:
     - target: {fileID: 1992480744855996, guid: b8724a22175053f42a78a79cf76454d9, type: 2}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82921608187255324, guid: b8724a22175053f42a78a79cf76454d9,
+        type: 2}
+      propertyPath: m_Pitch
+      value: 1.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b8724a22175053f42a78a79cf76454d9, type: 2}
@@ -739,6 +744,16 @@ Prefab:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1522363808}
+    - target: {fileID: 114580232705436280, guid: 01f22584ce125064b898d639b274ade0,
+        type: 2}
+      propertyPath: hurtClip
+      value: 
+      objectReference: {fileID: 8300000, guid: cc669f0cdb251a34fb2db794cb963880, type: 3}
+    - target: {fileID: 114580232705436280, guid: 01f22584ce125064b898d639b274ade0,
+        type: 2}
+      propertyPath: fireClip
+      value: 
+      objectReference: {fileID: 8300000, guid: efa73234a1015f0469965c5b6cab1636, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a68e8268782aa7a4584d74ac73ca6f9a, type: 2}
   m_IsPrefabParent: 0
@@ -1190,7 +1205,7 @@ Prefab:
     - target: {fileID: 224133995488662568, guid: b76eb38aeb940a6408c839bdfb158fb1,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 267.6
+      value: 208.20001
       objectReference: {fileID: 0}
     - target: {fileID: 224133995488662568, guid: b76eb38aeb940a6408c839bdfb158fb1,
         type: 2}
@@ -1215,7 +1230,7 @@ Prefab:
     - target: {fileID: 224365412593773454, guid: b76eb38aeb940a6408c839bdfb158fb1,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 267.6
+      value: 208.20001
       objectReference: {fileID: 0}
     - target: {fileID: 224365412593773454, guid: b76eb38aeb940a6408c839bdfb158fb1,
         type: 2}
@@ -1240,7 +1255,7 @@ Prefab:
     - target: {fileID: 224784009057324298, guid: b76eb38aeb940a6408c839bdfb158fb1,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 267.6
+      value: 208.20001
       objectReference: {fileID: 0}
     - target: {fileID: 224784009057324298, guid: b76eb38aeb940a6408c839bdfb158fb1,
         type: 2}
@@ -1265,7 +1280,7 @@ Prefab:
     - target: {fileID: 224277256019127030, guid: b76eb38aeb940a6408c839bdfb158fb1,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 267.6
+      value: 208.20001
       objectReference: {fileID: 0}
     - target: {fileID: 224277256019127030, guid: b76eb38aeb940a6408c839bdfb158fb1,
         type: 2}
@@ -1290,7 +1305,7 @@ Prefab:
     - target: {fileID: 224263129224494710, guid: b76eb38aeb940a6408c839bdfb158fb1,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 267.6
+      value: 208.20001
       objectReference: {fileID: 0}
     - target: {fileID: 224263129224494710, guid: b76eb38aeb940a6408c839bdfb158fb1,
         type: 2}
@@ -1315,7 +1330,7 @@ Prefab:
     - target: {fileID: 224741213231327226, guid: b76eb38aeb940a6408c839bdfb158fb1,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 267.6
+      value: 208.20001
       objectReference: {fileID: 0}
     - target: {fileID: 224741213231327226, guid: b76eb38aeb940a6408c839bdfb158fb1,
         type: 2}
@@ -1340,7 +1355,7 @@ Prefab:
     - target: {fileID: 224699443424309612, guid: b76eb38aeb940a6408c839bdfb158fb1,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 267.6
+      value: 208.20001
       objectReference: {fileID: 0}
     - target: {fileID: 224699443424309612, guid: b76eb38aeb940a6408c839bdfb158fb1,
         type: 2}
