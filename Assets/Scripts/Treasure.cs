@@ -9,6 +9,8 @@ public class Treasure : MonoBehaviour {
     public GameObject afterEffect;      // The after-effect to use
     private Rigidbody2D _rigidbody2D;   // The Rigidbody component attached
     public Vector2Int pos;
+    public SpriteRenderer _spriteRender;
+
     void Awake ()
     {
         instance = this;
@@ -26,7 +28,10 @@ public class Treasure : MonoBehaviour {
     {
         
 	}
-
+    IEnumerator changeColor()
+    {
+        yield return new WaitForEndOfFrame();
+    }
     void OnCollisionEnter2D (Collision2D collision)
     {
         if (collision.collider.CompareTag("Player"))
